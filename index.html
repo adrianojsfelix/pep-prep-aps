@@ -1,0 +1,1314 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>PEP & PrEP na APS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: guia de leitura em coluna única, barra fixa com Menu/Sumário/Voltar; cada módulo herda a cor do PDF original */
+:root{
+  --bg:#f6f8fb; --surface:#ffffff; --fg:#1c2733; --muted:#5a6878; --line:#d9e1ea;
+  --navy:#1f4e79; --navy-ink:#ffffff;
+  --m1:#12838a; --m1-soft:#e0f2f1;
+  --m2:#cf4459; --m2-soft:#fde7ea;
+  --m3:#6c47b8; --m3-soft:#ede6fa;
+  --m4:#d9701c; --m4-soft:#fdeedd;
+  --t-orange:#e08a0b; --t-orange-bg:#fff2de;
+  --t-purple:#7b4fcf; --t-purple-bg:#efe8fb;
+  --t-green:#1f9a6a; --t-green-bg:#e2f4ec;
+  --t-blue:#2a72c9; --t-blue-bg:#e3eefb;
+  --t-pink:#d64560; --t-pink-bg:#fde6ea;
+  --t-yellow:#b98500; --t-yellow-bg:#fff6d6;
+  --ok:#1f8a5b; --ok-bg:#e1f3ea; --bad:#c23a3a; --bad-bg:#fbe5e5;
+  --f-display:"Outfit","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Lexend","Segoe UI",system-ui,sans-serif;
+  --r:16px; color-scheme:light;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{overflow-x:clip;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.62;font-weight:400}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--navy)}
+.i{width:1em;height:1em;fill:currentColor;flex:none;--duo-o:.24}
+.ico .i{font-size:1.25em}
+.orbit .chip .i{font-size:1.3em}
+.orbit .core .i{font-size:1.35em}
+.n .i{font-size:1.1em}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--navy);outline-offset:2px;border-radius:6px}
+
+/* barra fixa */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px;min-height:60px}
+.bar-title{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.bar-title b{font-family:var(--f-display);font-size:15px;color:var(--navy)}
+.bar-title span{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;color:var(--fg)}
+.bar-btn:hover{border-color:var(--navy);color:var(--navy)}
+.bar-btn .i{font-size:16px}
+@media (max-width:520px){.bar-btn .lbl{display:none}.bar-btn{padding:9px}}
+.progress{height:3px;background:var(--navy);width:0;transition:width .1s linear}
+
+/* sumário */
+.toc{position:fixed;inset:0;z-index:40;display:flex;justify-content:flex-end;background:rgba(10,20,30,.45)}
+.toc-panel{width:min(380px,100%);height:100%;background:var(--surface);overflow-y:auto;padding:calc(20px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 20px}
+.toc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.toc-head h2{font-size:22px;color:var(--navy)}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li a{display:block;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--fg);font-size:14px}
+.toc li a:hover{background:var(--bg)}
+.toc .toc-mod{margin-top:14px;font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px}
+.toc .toc-sub a{padding-left:22px}
+
+/* banners: capa do projeto e capas dos módulos compartilham a mesma linguagem */
+.banner{position:relative;overflow:hidden;color:#fff;isolation:isolate;
+  background:radial-gradient(60% 80% at 75% 45%,var(--glow) 0%,transparent 60%),linear-gradient(150deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%)}
+.banner::after{content:"";position:absolute;inset:auto -10% -40% -10%;height:70%;background:radial-gradient(50% 60% at 50% 100%,rgba(255,255,255,.10),transparent 70%);z-index:-1}
+.banner .wrap{padding-block:56px 52px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center}
+.banner-text{display:grid;gap:14px;min-width:0}
+.kicker{display:inline-flex;align-items:center;gap:8px;width:fit-content;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 14px;font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.banner .big{white-space:nowrap}
+.banner h1,.banner .big{font-family:var(--f-display);font-weight:800;font-size:clamp(46px,8.5vw,84px);line-height:.95;letter-spacing:-.01em}
+.banner h2{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,4.2vw,38px);line-height:1.1}
+.banner .sub{font-family:var(--f-display);font-size:clamp(19px,3vw,26px);font-weight:600}
+.banner .lead{font-size:17px;opacity:.92;max-width:42ch}
+.banner .tag{display:inline-block;background:var(--tagbg);color:var(--tagfg);border-radius:14px;padding:12px 20px;font-family:var(--f-display);font-weight:700;letter-spacing:.02em;width:fit-content;line-height:1.25;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.banner .dots{display:flex;gap:8px}.banner .dots i{width:30px;height:6px;border-radius:4px}
+.spark{position:absolute;width:16px;height:16px;background:#fff7c9;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:.9;z-index:0;animation:twinkle 3.5s ease-in-out infinite}
+.spark.s2{width:10px;height:10px;animation-delay:1.2s}.spark.s3{width:12px;height:12px;animation-delay:2.1s}
+@keyframes twinkle{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+/* órbita de ícones */
+.orbit{--size:330px;--r:150px;position:relative;width:var(--size);height:var(--size);justify-self:center;max-width:100%}
+.orbit .ring{position:absolute;inset:6%;border-radius:50%;border:2px dashed rgba(255,255,255,.45)}
+.orbit .ring.r2{inset:22%;border:1px solid rgba(255,255,255,.18);background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%)}
+.orbit .core{position:absolute;left:50%;top:50%;width:38%;height:38%;transform:translate(-50%,-50%);border-radius:50%;background:#fff;color:var(--core);display:grid;place-items:center;font-size:calc(var(--size)*.19);box-shadow:0 0 0 12px rgba(255,255,255,.18),0 0 0 26px rgba(255,255,255,.08),0 18px 40px rgba(0,0,0,.25);--duo:var(--core2);--duo-o:.55}
+.orbit .chip{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:32px;color:var(--cc,#333);box-shadow:0 8px 20px rgba(0,0,0,.18);transform:rotate(var(--a)) translate(var(--r)) rotate(calc(-1*var(--a)));--duo-o:.3;animation:bob 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@media (max-width:720px){.banner .wrap{grid-template-columns:1fr;padding-block:36px 40px;gap:18px}.orbit{--size:240px;--r:106px;order:-1}.orbit .chip{width:46px;height:46px;margin:-23px 0 0 -23px;font-size:24px}}
+.hero{--g1:#0d3a63;--g2:#1a5f95;--g3:#12416e;--glow:rgba(120,210,255,.45);--tagbg:#cfeedd;--tagfg:#123c5c;--core:#3f8f6b;--core2:#8fd1ae}
+.banner.mod-1{--g1:#0b5d63;--g2:#13868c;--g3:#1d5f92;--glow:rgba(140,240,230,.40);--tagbg:#e0f7f4;--tagfg:#0b5d63;--core:#12838a;--core2:#f07b93}
+.banner.mod-2{--g1:#8e2236;--g2:#cf4459;--g3:#a32f50;--glow:rgba(255,190,200,.45);--tagbg:#ffe5ea;--tagfg:#8e2236;--core:#cf4459;--core2:#6fb4c9}
+.banner.mod-3{--g1:#3a2478;--g2:#6c47b8;--g3:#4b2f96;--glow:rgba(210,190,255,.45);--tagbg:#efe8fb;--tagfg:#3a2478;--core:#6c47b8;--core2:#f2b8c6}
+.banner.mod-4{--g1:#a24a0b;--g2:#d9701c;--g3:#b7520f;--glow:rgba(255,220,170,.45);--tagbg:#fff0dc;--tagfg:#8a3e08;--core:#3f8f6b;--core2:#8fd1ae}
+.banner.mod-cover{margin-top:64px;margin-inline:calc(50% - 50vw)}
+.banner .goals-inline{display:none}
+
+main{padding-bottom:64px}
+.section{padding-block:44px 8px}
+.eyebrow{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.h-plain{font-size:28px;color:var(--navy);padding-bottom:14px;border-bottom:2px solid var(--navy);margin-bottom:20px}
+.prose{display:grid;gap:14px;max-width:68ch}
+.prose p{text-align:left}
+.cite{color:var(--muted)}
+.source{font-size:13px;font-style:italic;color:var(--muted);margin-top:10px}
+
+/* menu */
+.menu-q{font-family:var(--f-display);font-size:20px;color:var(--navy);margin:8px 0 14px}
+.menu-list{display:grid;gap:12px;list-style:none;padding:0;margin:0}
+.menu-item{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:14px 14px 14px 16px;text-decoration:none;color:var(--fg);transition:border-color .15s,transform .15s}
+.menu-item:hover{border-color:var(--navy);transform:translateY(-1px)}
+.menu-num{width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--navy-ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:700}
+.menu-go{background:var(--navy);color:var(--navy-ink);border-radius:12px;padding:10px 16px;font-weight:600;font-size:14px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+@media (max-width:560px){.menu-item{grid-template-columns:auto 1fr}.menu-go{grid-column:1/-1;justify-content:center}}
+
+/* módulos */
+.mod-1{--c:var(--m1);--cs:var(--m1-soft)} .mod-2{--c:var(--m2);--cs:var(--m2-soft)}
+.mod-3{--c:var(--m3);--cs:var(--m3-soft)} .mod-4{--c:var(--m4);--cs:var(--m4-soft)}
+.goals{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-top:18px}
+.goals h3{color:var(--c);font-size:17px;margin-bottom:8px}
+.goals ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.goals li::marker{color:var(--c)}
+
+.sec-head{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:2px solid var(--c);margin-bottom:20px}
+.sec-num{background:var(--c);color:var(--surface);font-family:var(--f-display);font-weight:700;font-size:20px;border-radius:12px;padding:8px 14px;flex:none}
+.sec-head h2{font-size:clamp(22px,3.6vw,28px);color:var(--c);padding-top:4px}
+
+.callout-int{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:var(--c);margin:22px 0 10px;letter-spacing:.02em}
+.callout-int .i{font-size:16px}
+
+/* cartões coloridos */
+.tone-orange{--tc:var(--t-orange);--tb:var(--t-orange-bg)} .tone-purple{--tc:var(--t-purple);--tb:var(--t-purple-bg)}
+.tone-green{--tc:var(--t-green);--tb:var(--t-green-bg)} .tone-blue{--tc:var(--t-blue);--tb:var(--t-blue-bg)}
+.tone-pink{--tc:var(--t-pink);--tb:var(--t-pink-bg)} .tone-yellow{--tc:var(--t-yellow);--tb:var(--t-yellow-bg)}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:var(--tb);border-radius:var(--r);padding:20px}
+.step h3{color:var(--tc);font-size:17px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:6px}
+.step p{font-size:15px}
+.n{width:34px;height:34px;border-radius:50%;background:var(--tc);color:var(--surface);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;flex:none}
+.ico{width:64px;height:64px;border-radius:50%;background:var(--surface);color:var(--tc);display:grid;place-items:center;font-size:28px;border:2px solid var(--tc);flex:none}
+.step .n{align-self:start}
+@media (max-width:560px){.step{grid-template-columns:auto 1fr}.step .ico{display:none}}
+.pill-tag{display:inline-block;background:var(--tc);color:var(--surface);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:3px 12px;margin-bottom:6px}
+
+.alert{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:var(--t-yellow-bg);border-radius:var(--r);padding:18px 20px;margin-top:18px}
+.alert .b{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;color:var(--t-yellow);text-transform:uppercase;padding-right:16px;border-right:2px solid var(--t-yellow)}
+.alert .b .i{font-size:30px}
+@media (max-width:520px){.alert{grid-template-columns:1fr}.alert .b{border-right:0;padding:0}}
+.note{border-left:5px solid var(--c);background:var(--cs);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px}
+.note b{text-transform:uppercase;letter-spacing:.02em}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.flash{position:relative;border:0;border-radius:var(--r);background:var(--tb);padding:20px;text-align:left;cursor:pointer;min-height:170px;display:flex;flex-direction:column;gap:10px;transition:transform .15s, box-shadow .15s}
+.flash:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(20,40,60,.10)}
+.flash .face{display:flex;flex-direction:column;gap:10px;height:100%;animation:fadein .25s ease}
+.flash .back{display:none}
+.flash[aria-pressed="true"] .front{display:none}
+.flash[aria-pressed="true"] .back{display:flex}
+.flash[aria-pressed="true"]{background:var(--surface);box-shadow:inset 0 0 0 2px var(--tc)}
+.flash .q{display:flex;gap:12px;align-items:flex-start;font-family:var(--f-display);font-weight:700;font-size:17px;text-transform:uppercase;line-height:1.25}
+.flash .q .n{width:30px;height:30px;font-size:15px}
+.flash .hint{margin-top:auto;color:var(--tc);font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px}
+.flash .big-ico{align-self:flex-end;margin-top:-6px}
+.flash .back h4{color:var(--tc);font-size:15px;text-transform:uppercase}
+.flash .back p,.flash .back li{font-size:14.5px}
+.flash .back ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.flash .back .lbl{font-weight:600;margin-top:4px}
+@keyframes fadein{from{opacity:.2}to{opacity:1}}
+.flash.center{align-items:center;text-align:center}
+.flash.center .q{flex-direction:column;align-items:center;text-transform:none;font-size:17px}
+.flash.center .back{align-items:stretch;text-align:left}
+.quote{font-family:var(--f-display);font-weight:700;font-size:18px;text-align:center;background:var(--surface);border-radius:14px;padding:16px;line-height:1.3}
+
+/* saiba mais */
+.more{background:var(--t-green-bg);border-radius:var(--r);padding:22px;margin-top:22px}
+.more-h{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.more-h h3{color:var(--m1);font-size:22px}
+.docs{display:grid;gap:12px;margin-top:12px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:8px;min-width:0}
+.doc b{font-weight:600}
+.doc .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--c,var(--navy));color:var(--surface);border:0;border-radius:12px;padding:11px 18px;font-weight:600;font-size:14.5px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--c,var(--navy));box-shadow:inset 0 0 0 1.5px currentColor}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.url{font-size:12.5px;color:var(--muted);word-break:break-all}
+.copy{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+
+/* fluxograma interativo */
+.flow{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:20px;margin-top:8px}
+.flow-start{background:var(--c);color:var(--surface);border-radius:999px;padding:12px 20px;text-align:center;font-weight:600;font-family:var(--f-display)}
+.flow-trail{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.flow-trail li{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted);background:var(--bg);border-radius:10px;padding:8px 12px}
+.flow-trail .ans{margin-left:auto;font-weight:700;font-size:12px;border-radius:999px;padding:2px 10px;background:var(--ok-bg);color:var(--ok);white-space:nowrap}
+.flow-step{margin-top:14px;background:var(--cs);border-radius:16px;padding:20px;animation:fadein .25s ease}
+.flow-step .top{display:flex;gap:12px;align-items:flex-start}
+.flow-step .n{background:var(--c)}
+.flow-step h4{font-size:18px}
+.flow-step .h{color:var(--muted);font-size:14.5px;margin-top:6px}
+.flow-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ans-btn{border:2px solid var(--c);background:var(--surface);color:var(--fg);border-radius:12px;padding:10px 22px;font-weight:600;cursor:pointer;min-width:110px}
+.ans-btn:hover{background:var(--c);color:var(--surface)}
+.flow-out{margin-top:14px;border-radius:16px;padding:18px 20px;animation:fadein .25s ease;display:grid;gap:8px}
+.flow-out.stop{background:var(--bad-bg);border-left:6px solid var(--bad)}
+.flow-out.go{background:var(--ok-bg);border-left:6px solid var(--ok)}
+.flow-out h4{font-size:16px;display:flex;gap:8px;align-items:center}
+.flow-out.stop h4{color:var(--bad)} .flow-out.go h4{color:var(--ok)}
+.flow-foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.choice-grid{display:grid;gap:10px;margin-top:14px}
+.choice{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.choice:hover,.choice[aria-pressed="true"]{border-color:var(--c);color:var(--c)}
+details.full{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+details.full summary{cursor:pointer;font-weight:600;color:var(--c);font-size:14.5px}
+.full-list{display:grid;gap:10px;margin-top:12px;font-size:14.5px}
+.full-list .q{font-weight:600}
+.full-list .no{color:var(--bad);font-size:14px}
+
+/* tabela */
+.tbl-wrap{overflow-x:auto;margin-top:12px;border-radius:12px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px;background:var(--surface)}
+th{background:var(--c);color:var(--surface);text-align:left;font-weight:600;padding:12px 14px}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600;width:30%;background:var(--cs)}
+.tbl-title{font-family:var(--f-display);font-size:19px;color:var(--c);margin-top:28px}
+
+/* casa */
+.house{margin-top:20px}
+.roof{background:var(--navy);color:var(--surface);clip-path:polygon(50% 0,100% 100%,0 100%);text-align:center;padding:60px 20px 22px;font-family:var(--f-display);font-weight:700;font-size:20px}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+.pillar{border-radius:14px;overflow:hidden;background:var(--tb)}
+.pillar h4{background:var(--tc);color:var(--surface);padding:14px;text-align:center;font-size:16px}
+.pillar ul{list-style:none;margin:0;padding:12px;display:grid;gap:8px}
+.pillar li{background:var(--surface);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:center;font-size:14.5px}
+.pillar li .i{color:var(--tc);font-size:20px}
+.base{height:12px;border-radius:6px;background:var(--navy);margin-top:10px}
+@media (max-width:560px){.pillars{grid-template-columns:1fr}}
+
+/* caso clínico */
+.case{background:var(--t-green-bg);border-radius:20px;padding:24px;margin-top:10px;display:grid;gap:12px}
+.case-h{display:flex;align-items:center;gap:14px}
+.case-h .ico{border-color:var(--t-green);color:var(--t-green)}
+.case-h span{background:var(--t-green);color:var(--surface);font-family:var(--f-display);font-weight:700;font-size:20px;border-radius:999px;padding:8px 22px}
+.ask{display:flex;gap:14px;align-items:center;background:var(--t-blue-bg);border-radius:16px;padding:16px 18px;margin-top:16px}
+.ask .qi{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--surface);display:grid;place-items:center;font-weight:800;font-family:var(--f-display);font-size:20px;flex:none}
+.ask h4{color:var(--navy);font-size:17px}
+.ask small{color:var(--muted)}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:center;background:var(--tb);border-radius:14px;padding:14px 18px;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.opt:hover{border-color:var(--tc)}
+.opt input{width:20px;height:20px;accent-color:var(--tc)}
+.opt .letter{width:32px;height:32px;border-radius:50%;background:var(--tc);color:var(--surface);display:grid;place-items:center;font-weight:700;font-family:var(--f-display)}
+.opt .txt{border-left:2px solid var(--tc);padding-left:14px;font-size:15px}
+.opt.is-right{border-color:var(--ok)} .opt.is-wrong{border-color:var(--bad)}
+.fb{margin-top:14px;border-radius:14px;padding:18px 20px;animation:fadein .25s ease}
+.fb h4{font-size:16px;margin-bottom:6px}
+.fb.right{background:var(--ok-bg)} .fb.right h4{color:var(--ok)}
+.fb.wrong{background:var(--bad-bg)} .fb.wrong h4{color:var(--bad)}
+
+/* linha do tempo / agenda / tabs */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;position:relative}
+.tl::before{content:"";position:absolute;left:6%;right:6%;top:31px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--t-purple),var(--t-green),var(--t-blue),var(--t-pink))}
+.tl-btn{position:relative;border:0;background:transparent;cursor:pointer;display:grid;justify-items:center;gap:8px;text-align:center;padding:0 4px}
+.tl-dot{width:64px;height:64px;border-radius:50%;background:var(--tc);color:var(--surface);display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 5px var(--bg);transition:transform .15s}
+.tl-btn:hover .tl-dot,.tl-btn[aria-selected="true"] .tl-dot{transform:scale(1.08)}
+.tl-btn[aria-selected="true"] .tl-dot{box-shadow:0 0 0 5px var(--bg),0 0 0 8px var(--tc)}
+.tl-btn b{font-family:var(--f-display);font-size:14px;text-transform:uppercase;color:var(--tc);line-height:1.2}
+.tl-btn small{font-size:12px;color:var(--muted)}
+.panel{margin-top:16px;background:var(--tb);border-radius:16px;padding:20px;animation:fadein .25s ease}
+.panel h4{color:var(--tc);font-size:17px;margin-bottom:8px;text-transform:uppercase}
+.panel ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.panel li::marker{color:var(--tc)}
+.gauge{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+@media (max-width:560px){.tl{grid-template-columns:repeat(2,1fr);row-gap:18px}.tl::before{display:none}}
+.agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.ag-btn{border:2px solid transparent;background:var(--tb);border-radius:16px;padding:18px 10px 14px;cursor:pointer;display:grid;justify-items:center;gap:10px;text-align:center}
+.ag-btn .ico{width:62px;height:62px}
+.ag-btn b{font-family:var(--f-display);font-size:14px;text-transform:uppercase;color:var(--navy);line-height:1.2}
+.ag-btn .go{color:var(--tc);font-size:22px}
+.ag-btn[aria-selected="true"]{border-color:var(--tc)}
+@media (max-width:640px){.agenda{grid-template-columns:repeat(2,1fr)}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width:620px){.split{grid-template-columns:1fr}}
+.xcard{border-radius:16px;overflow:hidden;background:var(--tb);display:flex;flex-direction:column}
+.xcard header{background:var(--tc);color:var(--surface);padding:14px 18px;font-family:var(--f-display);font-weight:700;font-size:17px}
+.xcard .body{padding:18px;display:grid;gap:12px;flex:1}
+.xcard .ico{justify-self:center;width:90px;height:90px;font-size:40px}
+.xcard ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14.5px}
+.xcard li::marker{color:var(--m2)}
+.chip{display:inline-block;background:var(--tc);color:var(--surface);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:600;width:fit-content}
+.xcard .more-btn{margin-top:auto;justify-self:start;--c:var(--tc)}
+.xcard .detail{background:var(--surface);border-radius:12px;padding:14px 16px;animation:fadein .25s ease}
+.xcard .detail h5{margin:0 0 6px;font-family:var(--f-display);color:var(--tc);text-transform:uppercase;font-size:14px}
+
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width:620px){.quad{grid-template-columns:1fr}}
+.qcard{border-radius:16px;overflow:hidden;background:var(--tb)}
+.qcard header{background:var(--tc);color:var(--surface);padding:12px 16px;font-family:var(--f-display);font-weight:700;display:flex;gap:10px;align-items:center;text-transform:uppercase;font-size:14.5px}
+.qcard header .i{font-size:20px}
+.qcard p{padding:16px;font-size:15px}
+
+.guide{display:grid;gap:10px;margin-top:14px}
+.guide-row{display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.guide-row > div{display:flex;gap:14px;align-items:center;border-radius:14px;padding:14px 16px;background:var(--tb)}
+.guide-row .med{font-family:var(--f-display);font-weight:700;font-size:17px}
+.guide-row .ico{width:48px;height:48px;font-size:22px}
+.guide-h{display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.guide-h span{background:var(--navy);color:var(--surface);border-radius:999px;text-align:center;padding:8px;font-weight:600;font-size:14px;text-transform:uppercase}
+.days{display:flex;gap:16px;align-items:center;background:var(--t-yellow-bg);border-radius:16px;padding:18px 20px;font-family:var(--f-display);font-weight:700;font-size:19px;margin-top:12px}
+.days .cal{width:58px;height:58px;border-radius:14px;background:var(--surface);border:2px solid var(--navy);display:grid;place-items:center;color:var(--navy);font-size:22px;flex:none}
+@media (max-width:560px){.guide-row,.guide-h{grid-template-columns:1fr}.guide-h span:last-child{display:none}}
+.check3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--t-green-bg);border-radius:16px;overflow:hidden;margin-top:16px}
+.check3 h4{grid-column:1/-1;background:var(--t-green);color:var(--surface);padding:14px 18px;font-size:18px;display:flex;gap:10px;align-items:center}
+.check3 > div{padding:16px 18px;font-size:14.5px;border-left:1px solid var(--line)}
+.check3 > div:nth-of-type(1){border-left:0}
+.check3 b{display:flex;gap:8px;align-items:center;color:var(--t-green)}
+@media (max-width:620px){.check3{grid-template-columns:1fr}.check3 > div{border-left:0;border-top:1px solid var(--line)}}
+
+.cascade{display:grid;gap:8px;margin-top:14px}
+.cascade-h{background:var(--cs);border-radius:16px;padding:16px;text-align:center;font-family:var(--f-display);font-weight:700;color:var(--c);font-size:19px;text-transform:uppercase}
+.cascade .step{grid-template-columns:auto auto 1fr}
+.cascade .step .ico{order:0}
+.down{justify-self:center;color:var(--t-blue);font-size:22px}
+@media (max-width:560px){.cascade .step{grid-template-columns:auto 1fr}}
+
+.qs{display:grid;gap:12px;margin-top:14px}
+.qrow{background:var(--tb);border-radius:16px;padding:16px 18px;display:grid;gap:10px}
+.qrow h4{display:flex;gap:10px;align-items:center;color:var(--tc);font-size:15px;text-transform:uppercase}
+.qrow h4 .n{width:30px;height:30px;font-size:14px}
+.qrow blockquote{margin:0;background:var(--surface);border-radius:14px;padding:14px 16px;font-size:15.5px}
+.copyq{justify-self:start;font-size:13px}
+
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media (max-width:620px){.cols2{grid-template-columns:1fr}}
+.pop{border-radius:16px;background:var(--tb);padding:18px}
+.pop h4{display:inline-block;background:var(--tc);color:var(--surface);border-radius:999px;padding:6px 16px;font-size:14px;text-transform:uppercase;margin-bottom:8px}
+.pop > p{font-size:14.5px;padding-bottom:10px;border-bottom:1px solid var(--tc);margin-bottom:10px}
+.pop ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14.5px}
+.pop li::marker{color:var(--m4)}
+.ep{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.ep .hd{border-radius:12px;padding:12px 16px;color:var(--surface);font-family:var(--f-display);font-weight:700;display:flex;gap:10px;align-items:center;font-size:17px}
+.ep .hd.no{background:var(--t-pink)} .ep .hd.yes{background:var(--t-green)}
+.ep .c{border-radius:12px;padding:12px 16px;font-size:14.5px}
+.ep .c.no{background:var(--t-pink-bg)} .ep .c.yes{background:var(--t-green-bg)}
+@media (max-width:560px){.ep{grid-template-columns:1fr}.ep .hd.yes{margin-top:8px}}
+
+.barrier-case{background:var(--surface);border:2px solid var(--navy);border-radius:20px;overflow:hidden;margin-top:12px}
+.barrier-case header{background:var(--navy);color:var(--surface);padding:14px 20px;font-family:var(--f-display);font-weight:700;font-size:18px;display:flex;gap:10px;align-items:center;text-transform:uppercase}
+.barrier-case .in{padding:20px;display:grid;gap:14px}
+.story{background:var(--t-blue-bg);border-radius:14px;padding:16px;font-size:15px}
+.chk{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;background:var(--surface)}
+.chk input{width:20px;height:20px;accent-color:var(--navy)}
+.chk.hit{border-color:var(--ok);background:var(--ok-bg)} .chk.miss{border-color:var(--t-yellow);background:var(--t-yellow-bg)}
+.chk .tag{margin-left:auto;font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
+.analysis{background:var(--bg);border-radius:14px;padding:16px 18px;animation:fadein .25s ease}
+.analysis ul{margin:8px 0;padding-left:20px;display:grid;gap:4px}
+
+.checklist{background:var(--t-blue-bg);border:2px solid var(--t-blue);border-radius:20px;padding:20px;margin-top:12px;display:grid;gap:10px}
+.checklist h3{color:var(--navy);font-size:20px}
+.checklist .score{font-size:14px;font-weight:600;color:var(--t-blue)}
+.meter{height:8px;border-radius:4px;background:var(--surface);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--t-blue);width:0;transition:width .25s}
+.reflect{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:var(--t-green-bg);border-radius:16px;padding:18px 20px;margin-top:14px}
+.reflect b{background:var(--t-green);color:var(--surface);border-radius:999px;padding:8px 18px;font-family:var(--f-display);white-space:nowrap}
+@media (max-width:520px){.reflect{grid-template-columns:1fr}.reflect b{justify-self:start}}
+
+.final{margin-top:56px}
+.cta{display:flex;justify-content:center;margin-top:20px;flex-direction:column;align-items:center;gap:8px}
+.cta .btn{font-size:17px;padding:16px 28px;border-radius:999px;--c:var(--navy)}
+.cta small{color:var(--muted);font-size:13px}
+.refs{display:grid;gap:12px;font-size:14px;color:var(--fg)}
+.refs p{padding-left:16px;text-indent:-16px}
+.refs a{word-break:break-all}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-block:24px;color:var(--muted);font-size:13px}
+.toplink{margin-top:28px;display:flex;justify-content:flex-end}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-pill" viewBox="0 0 256 256"><path d="M160,160l-50.75,50.75a45.26,45.26,0,0,1-64,0h0a45.26,45.26,0,0,1,0-64L96,96Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M216.43,39.6a53.27,53.27,0,0,0-75.33,0L39.6,141.09a53.26,53.26,0,0,0,75.32,75.31L216.43,114.91A53.32,53.32,0,0,0,216.43,39.6ZM103.61,205.09h0a37.26,37.26,0,0,1-52.7-52.69L96,107.31,148.7,160ZM205.11,103.6,160,148.69,107.32,96l45.1-45.09a37.26,37.26,0,0,1,52.69,52.69ZM189.68,82.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,1,1-11.31-11.32l24-24A8,8,0,0,1,189.68,82.34Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 256 256"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 256 256"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"/></symbol>
+<symbol id="i-alert" viewBox="0 0 256 256"><path d="M215.46,216H40.54C27.92,216,20,202.79,26.13,192.09L113.59,40.22c6.3-11,22.52-11,28.82,0l87.46,151.87C236,202.79,228.08,216,215.46,216Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/></symbol>
+<symbol id="i-users" viewBox="0 0 256 256"><path d="M168,144a40,40,0,1,1-40-40A40,40,0,0,1,168,144ZM64,56A32,32,0,1,0,96,88,32,32,0,0,0,64,56Zm128,0a32,32,0,1,0,32,32A32,32,0,0,0,192,56Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1,0-16,24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.85,8,57,57,0,0,0-98.15,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 256 256"><path d="M231.66,213.73a8,8,0,0,1-9.93,9.93L194,215.5A72.05,72.05,0,0,1,92.06,175.89h0c1.31.07,2.62.11,3.94.11a72,72,0,0,0,67.93-95.88h0A72,72,0,0,1,223.5,186Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></symbol>
+<symbol id="i-tube" viewBox="0 0 256 256"><path d="M167.18,140.82,94.77,213.23a36.77,36.77,0,0,1-52,0h0a36.77,36.77,0,0,1,0-52l30-30c9.37-3.65,25.78-6.36,47.18,4.82S157.81,144.47,167.18,140.82Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L37.11,155.57a44.77,44.77,0,0,0,63.32,63.32L212.32,107l22.21-7.4a8,8,0,0,0,3.13-13.25ZM89.11,207.57a28.77,28.77,0,0,1-40.68-40.68l28.8-28.8c8.47-2.9,21.75-4,39.07,5,10.6,5.54,20.18,8,28.56,8.73ZM205.47,92.41a8,8,0,0,0-3.13,1.93l-39.57,39.57c-8.47,2.9-21.75,4-39.07-5-10.6-5.54-20.18-8-28.56-8.73L172,43.31,217.19,88.5Z"/></symbol>
+<symbol id="i-steth" viewBox="0 0 256 256"><path d="M240,160a32,32,0,1,1-32-32A32,32,0,0,1,240,160Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M220,160a12,12,0,1,1-12-12A12,12,0,0,1,220,160Zm-4.55,39.29A48.08,48.08,0,0,1,168,240H144a48.05,48.05,0,0,1-48-48V151.49A64,64,0,0,1,40,88V40a8,8,0,0,1,8-8H72a8,8,0,0,1,0,16H56V88a48,48,0,0,0,48.64,48c26.11-.34,47.36-22.25,47.36-48.83V48H136a8,8,0,0,1,0-16h24a8,8,0,0,1,8,8V87.17c0,32.84-24.53,60.29-56,64.31V192a32,32,0,0,0,32,32h24a32.06,32.06,0,0,0,31.22-25,40,40,0,1,1,16.23.27ZM232,160a24,24,0,1,0-24,24A24,24,0,0,0,232,160Z"/></symbol>
+<symbol id="i-clinic" viewBox="0 0 256 256"><path d="M160,48V216H128V160H80v56H48V48a8,8,0,0,1,8-8h96A8,8,0,0,1,160,48Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M248,208h-8V128a16,16,0,0,0-16-16H168V48a16,16,0,0,0-16-16H56A16,16,0,0,0,40,48V208H32a8,8,0,0,0,0,16H248a8,8,0,0,0,0-16Zm-24-80v80H168V128ZM56,48h96V208H136V160a8,8,0,0,0-8-8H80a8,8,0,0,0-8,8v48H56Zm64,160H88V168h32ZM72,96a8,8,0,0,1,8-8H96V72a8,8,0,0,1,16,0V88h16a8,8,0,0,1,0,16H112v16a8,8,0,0,1-16,0V104H80A8,8,0,0,1,72,96Z"/></symbol>
+<symbol id="i-search" viewBox="0 0 256 256"><path d="M192,112a80,80,0,1,1-80-80A80,80,0,0,1,192,112Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M229.66,218.34,179.6,168.28a88.21,88.21,0,1,0-11.32,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-book" viewBox="0 0 256 256"><path d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"/></symbol>
+<symbol id="i-syringe" viewBox="0 0 256 256"><path d="M196,116l-89.66,89.66a8,8,0,0,1-5.65,2.34H48V155.31a8,8,0,0,1,2.34-5.65L140,60Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M237.66,66.34l-48-48a8,8,0,0,0-11.32,11.32L196.69,48,168,76.69,133.66,42.34a8,8,0,0,0-11.32,11.32L128.69,60l-84,84A15.86,15.86,0,0,0,40,155.31v49.38L18.34,226.34a8,8,0,0,0,11.32,11.32L51.31,216h49.38A15.86,15.86,0,0,0,112,211.31l84-84,6.34,6.35a8,8,0,0,0,11.32-11.32L179.31,88,208,59.31l18.34,18.35a8,8,0,0,0,11.32-11.32ZM100.69,200H56V155.31l18-18,20.34,20.35a8,8,0,0,0,11.32-11.32L85.31,126,98,113.31l20.34,20.35a8,8,0,0,0,11.32-11.32L109.31,102,140,71.31,184.69,116Z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 256 256"><path d="M232,102c0,66-104,122-104,122S24,168,24,102A54,54,0,0,1,78,48c22.59,0,41.94,12.31,50,32,8.06-19.69,27.41-32,50-32A54,54,0,0,1,232,102Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 256 256"><path d="M216,128a88,88,0,1,1-88-88A88,88,0,0,1,216,128Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 256 256"><path d="M128,24a80,80,0,0,0-80,80c0,72,80,128,80,128s80-56,80-128A80,80,0,0,0,128,24Zm0,112a32,32,0,1,1,32-32A32,32,0,0,1,128,136Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol>
+<symbol id="i-gear" viewBox="0 0 256 256"><path d="M207.86,123.18l16.78-21a99.14,99.14,0,0,0-10.07-24.29l-26.7-3a81,81,0,0,0-6.81-6.81l-3-26.71a99.43,99.43,0,0,0-24.3-10l-21,16.77a81.59,81.59,0,0,0-9.64,0l-21-16.78A99.14,99.14,0,0,0,77.91,41.43l-3,26.7a81,81,0,0,0-6.81,6.81l-26.71,3a99.43,99.43,0,0,0-10,24.3l16.77,21a81.59,81.59,0,0,0,0,9.64l-16.78,21a99.14,99.14,0,0,0,10.07,24.29l26.7,3a81,81,0,0,0,6.81,6.81l3,26.71a99.43,99.43,0,0,0,24.3,10l21-16.77a81.59,81.59,0,0,0,9.64,0l21,16.78a99.14,99.14,0,0,0,24.29-10.07l3-26.7a81,81,0,0,0,6.81-6.81l26.71-3a99.43,99.43,0,0,0,10-24.3l-16.77-21A81.59,81.59,0,0,0,207.86,123.18ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.6,107.6,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.29,107.29,0,0,0-26.25-10.86,8,8,0,0,0-7.06,1.48L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.6,107.6,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8.06,8.06,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8.06,8.06,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 256 256"><path d="M208,104a79.86,79.86,0,0,1-30.59,62.92A24.29,24.29,0,0,0,168,186v6a8,8,0,0,1-8,8H96a8,8,0,0,1-8-8v-6a24.11,24.11,0,0,0-9.3-19A79.87,79.87,0,0,1,48,104.45C47.76,61.09,82.72,25,126.07,24A80,80,0,0,1,208,104Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/></symbol>
+<symbol id="i-door" viewBox="0 0 256 256"><path d="M200,40V224H168V32h24A8,8,0,0,1,200,40Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M232,216H208V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V216H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Zm-40,0H176V40h16ZM64,40h96V216H64Zm80,92a12,12,0,1,1-12-12A12,12,0,0,1,144,132Z"/></symbol>
+<symbol id="i-cap" viewBox="0 0 256 256"><path d="M216,113.07v53.22a8,8,0,0,1-2,5.31c-11.3,12.59-38.9,36.4-86,36.4s-74.68-23.81-86-36.4a8,8,0,0,1-2-5.31V113.07L128,160Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"/></symbol>
+<symbol id="i-net" viewBox="0 0 256 256"><path d="M208,200a32,32,0,1,1-32-32A32,32,0,0,1,208,200ZM176,88a32,32,0,1,0-32-32A32,32,0,0,0,176,88Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></symbol>
+<symbol id="i-scale" viewBox="0 0 256 256"><path d="M56,88l32,80c0,17.67-20,24-32,24s-32-6.33-32-24ZM200,56l-32,80c0,17.67,20,24,32,24s32-6.33,32-24Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M239.43,133l-32-80h0a8,8,0,0,0-9.16-4.84L136,62V40a8,8,0,0,0-16,0V65.58L54.26,80.19A8,8,0,0,0,48.57,85h0v.06L16.57,165a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32a7.92,7.92,0,0,0-.57-3L66.92,93.77,120,82V208H104a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16H136V78.42L187,67.1,160.57,133a7.92,7.92,0,0,0-.57,3c0,23.31,24.54,32,40,32s40-8.69,40-32A7.92,7.92,0,0,0,239.43,133ZM56,184c-7.53,0-22.76-3.61-23.93-14.64L56,109.54l23.93,59.82C78.76,180.39,63.53,184,56,184Zm144-32c-7.53,0-22.76-3.61-23.93-14.64L200,77.54l23.93,59.82C222.76,148.39,207.53,152,200,152Z"/></symbol>
+<symbol id="i-hand" viewBox="0 0 256 256"><path d="M208,116v36a80,80,0,0,1-160,0V76a20,20,0,0,1,40,0V44a20,20,0,0,1,40,0V60a20,20,0,0,1,40,0v56a20,20,0,0,1,40,0Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M188,88a27.75,27.75,0,0,0-12,2.71V60a28,28,0,0,0-41.36-24.6A28,28,0,0,0,80,44v6.71A27.75,27.75,0,0,0,68,48,28,28,0,0,0,40,76v76a88,88,0,0,0,176,0V116A28,28,0,0,0,188,88Zm12,64a72,72,0,0,1-144,0V76a12,12,0,0,1,24,0v44a8,8,0,0,0,16,0V44a12,12,0,0,1,24,0v68a8,8,0,0,0,16,0V60a12,12,0,0,1,24,0v68.67A48.08,48.08,0,0,0,120,176a8,8,0,0,0,16,0,32,32,0,0,1,32-32,8,8,0,0,0,8-8V116a12,12,0,0,1,24,0Z"/></symbol>
+<symbol id="i-question" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></symbol>
+<symbol id="i-clip" viewBox="0 0 256 256"><path d="M208,48V216a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H96a39.83,39.83,0,0,0-8,24v8h80V64a39.83,39.83,0,0,0-8-24h40A8,8,0,0,1,208,48Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></symbol>
+<symbol id="i-drop" viewBox="0 0 256 256"><path d="M208,144a80,80,0,0,1-160,0c0-72,80-128,80-128S208,72,208,144Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM128,216a72.08,72.08,0,0,1-72-72c0-57.23,55.47-105,72-118,16.53,13,72,60.75,72,118A72.08,72.08,0,0,1,128,216Zm55.89-62.66a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 256 256"><path d="M96,240l16-80L48,136,160,16,144,96l64,24Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></symbol>
+<symbol id="i-doc" viewBox="0 0 256 256"><path d="M208,88H152V32Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></symbol>
+<symbol id="i-barrier" viewBox="0 0 256 256"><path d="M232,80v68L156,72h68A8,8,0,0,1,232,80ZM32,72a8,8,0,0,0-8,8v4l76,76h72L84,72Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M224,64H32A16,16,0,0,0,16,80v72a16,16,0,0,0,16,16H56v32a8,8,0,0,0,16,0V168H184v32a8,8,0,0,0,16,0V168h24a16,16,0,0,0,16-16V80A16,16,0,0,0,224,64Zm0,64.69L175.31,80H224ZM80.69,80l72,72H103.31L32,80.69V80ZM32,103.31,80.69,152H32ZM224,152H175.31l-72-72h49.38L224,151.32V152Z"/></symbol>
+<symbol id="i-person" viewBox="0 0 256 256"><path d="M192,96a64,64,0,1,1-64-64A64,64,0,0,1,192,96Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+<symbol id="i-target" viewBox="0 0 256 256"><path d="M176,128a48,48,0,1,1-48-48A48,48,0,0,1,176,128Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"/></symbol>
+<symbol id="i-hand-tap" viewBox="0 0 256 256"><path d="M216,148v36c0,24-8,40-8,40H72L42.68,174a20,20,0,0,1,34.64-20L96,184V76a20,20,0,0,1,40,0v56a20,20,0,0,1,40,0v16a20,20,0,0,1,40,0Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M56,76a60,60,0,0,1,120,0,8,8,0,0,1-16,0,44,44,0,0,0-88,0,8,8,0,1,1-16,0Zm140,44a27.9,27.9,0,0,0-13.36,3.39A28,28,0,0,0,144,106.7V76a28,28,0,0,0-56,0v80l-3.82-6.13a28,28,0,0,0-48.41,28.17l29.32,50A8,8,0,1,0,78.89,220L49.6,170a12,12,0,1,1,20.78-12l.14.23,18.68,30A8,8,0,0,0,104,184V76a12,12,0,0,1,24,0v68a8,8,0,1,0,16,0V132a12,12,0,0,1,24,0v20a8,8,0,0,0,16,0v-4a12,12,0,0,1,24,0v36c0,21.61-7.1,36.3-7.16,36.42a8,8,0,0,0,3.58,10.73A7.9,7.9,0,0,0,208,232a8,8,0,0,0,7.16-4.42c.37-.73,8.85-18,8.85-43.58V148A28,28,0,0,0,196,120Z"/></symbol>
+<symbol id="i-pregnant" viewBox="0 0 256 256"><path d="M232,112H144V48a8,8,0,0,1,8-8h8A72,72,0,0,1,232,112Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M160,32h-8a16,16,0,0,0-16,16v56H55.2A40.07,40.07,0,0,0,16,72a8,8,0,0,0,0,16,24,24,0,0,1,24,24,80.09,80.09,0,0,0,80,80h40a80,80,0,0,0,0-160Zm63.48,72H166.81l41.86-33.49A63.73,63.73,0,0,1,223.48,104ZM160,48a63.59,63.59,0,0,1,36.69,11.61L152,95.35V48Zm0,128H120a64.09,64.09,0,0,1-63.5-56h167A64.09,64.09,0,0,1,160,176Zm-56,48a16,16,0,1,1-16-16A16,16,0,0,1,104,224Zm104,0a16,16,0,1,1-16-16A16,16,0,0,1,208,224Z"/></symbol>
+<symbol id="i-family" viewBox="0 0 256 256"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"/></symbol>
+<symbol id="i-careheart" viewBox="0 0 256 256"><path d="M16,152H48v56H16a8,8,0,0,1-8-8V160A8,8,0,0,1,16,152ZM192.54,40A39.12,39.12,0,0,0,156,64a39.12,39.12,0,0,0-36.54-24C97.67,40,80,58.31,80,80c0,14.56,7,27.71,16.73,40H140a20,20,0,0,1,0,40h4l37.78-8.68C203.82,135.07,232,109.23,232,80,232,58.31,214.33,40,192.54,40Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z"/></symbol>
+<symbol id="i-aid" viewBox="0 0 256 256"><path d="M224,72V200a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8H216A8,8,0,0,1,224,72Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,200H40V72H216V200Zm-56-64a8,8,0,0,1-8,8H136v16a8,8,0,0,1-16,0V144H104a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,160,136Z"/></symbol>
+<symbol id="i-seal" viewBox="0 0 256 256"><path d="M232,128c0,12.51-17.82,21.95-22.68,33.69-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68c-11.32-4.68-30.65,1.42-39.85-7.78s-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></symbol>
+<symbol id="i-calcheck" viewBox="0 0 256 256"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></symbol>
+<symbol id="i-chattext" viewBox="0 0 256 256"><path d="M224,64V192a8,8,0,0,1-8,8H80L45.15,230.11A8,8,0,0,1,32,224V64a8,8,0,0,1,8-8H216A8,8,0,0,1,224,64Z" style="opacity:var(--duo-o,.22);fill:var(--duo,currentColor)"/><path d="M216,48H40A16,16,0,0,0,24,64V224a15.85,15.85,0,0,0,9.24,14.5A16.13,16.13,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,224h0ZM216,192H80a8,8,0,0,0-5.23,1.95L40,224V64H216ZM88,112a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm0,32a8,8,0,0,1,8-8h64a8,8,0,1,1,0,16H96A8,8,0,0,1,88,144Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"/></symbol>
+<symbol id="i-grid" viewBox="0 0 256 256"><path d="M100,36H56A20,20,0,0,0,36,56v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V56A20,20,0,0,0,100,36ZM96,96H60V60H96ZM200,36H156a20,20,0,0,0-20,20v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V56A20,20,0,0,0,200,36Zm-4,60H160V60h36Zm-96,40H56a20,20,0,0,0-20,20v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V156A20,20,0,0,0,100,136Zm-4,60H60V160H96Zm104-60H156a20,20,0,0,0-20,20v44a20,20,0,0,0,20,20h44a20,20,0,0,0,20-20V156A20,20,0,0,0,200,136Zm-4,60H160V160h36Z"/></symbol>
+<symbol id="i-left" viewBox="0 0 256 256"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"/></symbol>
+<symbol id="i-right" viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"/></symbol>
+<symbol id="i-down" viewBox="0 0 256 256"><path d="M208.49,152.49l-72,72a12,12,0,0,1-17,0l-72-72a12,12,0,0,1,17-17L116,187V40a12,12,0,0,1,24,0V187l51.51-51.52a12,12,0,0,1,17,17Z"/></symbol>
+<symbol id="i-up" viewBox="0 0 256 256"><path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"/></symbol>
+<symbol id="i-ext" viewBox="0 0 256 256"><path d="M228,104a12,12,0,0,1-24,0V69l-59.51,59.51a12,12,0,0,1-17-17L187,52H152a12,12,0,0,1,0-24h64a12,12,0,0,1,12,12Zm-44,24a12,12,0,0,0-12,12v64H52V84h64a12,12,0,0,0,0-24H48A20,20,0,0,0,28,80V208a20,20,0,0,0,20,20H176a20,20,0,0,0,20-20V140A12,12,0,0,0,184,128Z"/></symbol>
+<symbol id="i-flip" viewBox="0 0 256 256"><path d="M236,144a68.07,68.07,0,0,1-68,68H80a12,12,0,0,1,0-24h88a44,44,0,0,0,0-88H61l27.52,27.51a12,12,0,0,1-17,17l-48-48a12,12,0,0,1,0-17l48-48a12,12,0,1,1,17,17L61,76H168A68.08,68.08,0,0,1,236,144Z"/></symbol>
+</svg>
+
+<header class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-title"><b>PEP &amp; PrEP · APS</b><span id="bar-where">Guia prático para profissionais de saúde</span></div>
+    <a class="bar-btn" href="#menu"><svg class="i"><use href="#i-grid"/></svg><span class="lbl">Menu</span></a>
+    <button class="bar-btn" id="toc-open" aria-haspopup="dialog" aria-controls="toc"><svg class="i"><use href="#i-menu"/></svg><span class="lbl">Sumário</span></button>
+    <button class="bar-btn" id="back-btn"><svg class="i"><use href="#i-left"/></svg><span class="lbl">Voltar</span></button>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="toc" id="toc" role="dialog" aria-modal="true" aria-label="Sumário" hidden>
+  <nav class="toc-panel">
+    <div class="toc-head"><h2>Sumário</h2><button class="bar-btn" id="toc-close"><svg class="i"><use href="#i-x"/></svg><span>Fechar</span></button></div>
+    <ol>
+      <li><a href="#apresentacao">Apresentação</a></li>
+      <li><a href="#menu">Menu interativo</a></li>
+      <li class="toc-mod" style="color:var(--m1)">Módulo 1 · PrEP em evidência</li>
+      <li class="toc-sub"><a href="#s1-1">1.1 Por que falar de PrEP na APS?</a></li>
+      <li class="toc-sub"><a href="#s1-2">1.2 PrEP: o essencial</a></li>
+      <li class="toc-sub"><a href="#s1-3">1.3 Quando pensar em PrEP?</a></li>
+      <li class="toc-sub"><a href="#s1-4">1.4 Antes de iniciar a PrEP</a></li>
+      <li class="toc-sub"><a href="#s1-5">1.5 Continuidade do cuidado na PrEP</a></li>
+      <li class="toc-sub"><a href="#caso-1">Hora da prática: caso clínico</a></li>
+      <li class="toc-mod" style="color:var(--m2)">Módulo 2 · PEP: reconhecer e agir</li>
+      <li class="toc-sub"><a href="#s2-1">2.1 PEP: quando pensar?</a></li>
+      <li class="toc-sub"><a href="#s2-2">2.2 A exposição aconteceu. E agora?</a></li>
+      <li class="toc-sub"><a href="#s2-3">2.3 PEP indicada. Como iniciar?</a></li>
+      <li class="toc-sub"><a href="#s2-4">2.4 PEP no tempo certo</a></li>
+      <li class="toc-sub"><a href="#s2-5">2.5 Testagem e acompanhamento</a></li>
+      <li class="toc-sub"><a href="#s2-6">2.6 Exposição ocupacional e não ocupacional</a></li>
+      <li class="toc-sub"><a href="#s2-7">2.7 Quando encaminhar?</a></li>
+      <li class="toc-mod" style="color:var(--m3)">Módulo 3 · Da urgência à prevenção</li>
+      <li class="toc-sub"><a href="#s3-1">3.1 PEP não precisa ser o fim do cuidado</a></li>
+      <li class="toc-sub"><a href="#s3-2">3.2 O risco continua?</a></li>
+      <li class="toc-sub"><a href="#s3-3">3.3 Como identificar risco recorrente?</a></li>
+      <li class="toc-sub"><a href="#s3-4">3.4 Da PEP à PrEP: a transição</a></li>
+      <li class="toc-sub"><a href="#caso-2">Caso clínico: PEP terminou. O risco também?</a></li>
+      <li class="toc-mod" style="color:var(--m4)">Módulo 4 · Prevenção sem barreiras</li>
+      <li class="toc-sub"><a href="#s4-1">4.1 As palavras também fazem parte do cuidado</a></li>
+      <li class="toc-sub"><a href="#s4-2">4.2 O que está dificultando o acesso?</a></li>
+      <li class="toc-sub"><a href="#s4-3">4.3 Equidade: diferentes necessidades</a></li>
+      <li class="toc-sub"><a href="#s4-4">4.4 Como reduzir barreiras na APS?</a></li>
+      <li class="toc-mod" style="color:var(--navy)">Seção final</li>
+      <li class="toc-sub"><a href="#final">Do conhecimento à prática</a></li>
+      <li class="toc-sub"><a href="#referencias">Referências</a></li>
+    </ol>
+  </nav>
+</div>
+
+<section class="banner hero" id="inicio"><span class="spark" style="top:14%;left:56%"></span><span class="spark s2" style="top:70%;left:8%"></span><span class="spark s3" style="top:22%;left:94%"></span><span class="spark s2" style="top:84%;left:88%"></span>
+  <div class="wrap">
+    <div class="banner-text">
+      <span class="kicker">Tecnologia cuidativo-educacional</span>
+      <h1>PEP&amp;PrEP</h1>
+      <p class="sub">Atenção Primária à Saúde</p>
+      <p class="tag">GUIA PRÁTICO PARA<br>PROFISSIONAIS DE SAÚDE</p>
+      <div class="dots" aria-hidden="true"><i style="background:#2bb5a4"></i><i style="background:#ef6f86"></i><i style="background:#9b7be8"></i><i style="background:#f4a04b"></i></div>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="ring r2"></span><span class="core"><svg class="i"><use href="#i-shield"/></svg></span><span class="chip" style="--a:-90deg;--cc:#1f4e79;--d:0.0s"><svg class="i"><use href="#i-clock"/></svg></span><span class="chip" style="--a:-39deg;--cc:#7b4fcf;--d:0.6s"><svg class="i"><use href="#i-users"/></svg></span><span class="chip" style="--a:13deg;--cc:#e08a0b;--d:1.2s"><svg class="i"><use href="#i-refresh"/></svg></span><span class="chip" style="--a:64deg;--cc:#d64560;--d:1.8s"><svg class="i"><use href="#i-pill"/></svg></span><span class="chip" style="--a:116deg;--cc:#d64560;--d:2.4s"><svg class="i"><use href="#i-careheart"/></svg></span><span class="chip" style="--a:167deg;--cc:#2a72c9;--d:3.0s"><svg class="i"><use href="#i-chat"/></svg></span><span class="chip" style="--a:219deg;--cc:#12838a;--d:3.6s"><svg class="i"><use href="#i-clinic"/></svg></span></div>
+  </div>
+</section>
+
+<main class="wrap">
+
+<section class="section" id="apresentacao">
+  <h2 class="h-plain">Apresentação</h2>
+  <div class="prose">
+    <p>A prevenção do HIV integra o cuidado à saúde e compreende diferentes estratégias que podem ser ofertadas na Atenção Primária à Saúde (APS). Entre elas, destacam-se a Profilaxia Pós-Exposição (PEP) e a Profilaxia Pré-Exposição (PrEP) ao HIV, que fazem parte da prevenção combinada e ampliam as possibilidades de proteção contra a infecção <span class="cite">(Brasil, 2024b; Brasil, 2025b)</span>.</p>
+    <p>A incorporação dessas estratégias à APS exige dos profissionais conhecimentos para identificar situações de exposição e necessidades de prevenção, avaliar indicações, realizar a testagem para HIV e assegurar o acompanhamento das pessoas atendidas, considerando as particularidades de cada situação.</p>
+    <p>Diante dessas necessidades, este guia foi desenvolvido como uma Tecnologia Cuidativo-Educacional (TCE) digital, destinada a apoiar a educação permanente de enfermeiros e médicos e contribuir para a qualificação das práticas de prevenção do HIV na APS.</p>
+    <p>Para isso, o material reúne informações fundamentadas em evidências científicas e documentos técnico-normativos, apresentadas por meio de orientações práticas, fluxos de cuidado, instrumentos de apoio e recursos interativos que aproximam o conhecimento científico das situações vivenciadas nos serviços de saúde.</p>
+    <p>As orientações devem ser utilizadas em conjunto com a avaliação clínica individualizada e as recomendações oficiais vigentes, respeitando as necessidades de cada pessoa e a organização da rede de atenção à saúde.</p>
+    <p>Explore os conteúdos e utilize os recursos deste guia como apoio às decisões e às atividades desenvolvidas em sua prática profissional.</p>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <h2 class="h-plain">Menu interativo</h2>
+  <p class="menu-q">O que você precisa resolver?</p>
+  <ol class="menu-list">
+    <li><a class="menu-item" href="#s2-2"><span class="menu-num">1</span><span>Usuário teve uma exposição ao HIV</span><span class="menu-go">Avaliar PEP <svg class="i"><use href="#i-right"/></svg></span></a></li>
+    <li><a class="menu-item" href="#s1-3"><span class="menu-num">2</span><span>Quero avaliar PrEP</span><span class="menu-go">Avaliar PrEP <svg class="i"><use href="#i-right"/></svg></span></a></li>
+    <li><a class="menu-item" href="#s3-4"><span class="menu-num">3</span><span>Usuário realizou PEP e continua em situação de risco</span><span class="menu-go">Avaliar PEP › PrEP <svg class="i"><use href="#i-right"/></svg></span></a></li>
+    <li><a class="menu-item" href="#s2-5"><span class="menu-num">4</span><span>Quero organizar o cuidado na UBS</span><span class="menu-go">Cuidado na APS <svg class="i"><use href="#i-right"/></svg></span></a></li>
+    <li><a class="menu-item" href="#s4-1"><span class="menu-num">5</span><span>Tenho dificuldade na abordagem do tema</span><span class="menu-go">Comunicação e equidade <svg class="i"><use href="#i-right"/></svg></span></a></li>
+    <li><a class="menu-item" href="#s4-4"><span class="menu-num">6</span><span>Quero melhorar o processo de trabalho</span><span class="menu-go">Implementação <svg class="i"><use href="#i-right"/></svg></span></a></li>
+  </ol>
+</section>
+
+<!-- ============ MÓDULO 1 ============ -->
+<div class="mod-1" data-mod="Módulo 1 · PrEP em evidência">
+<section class="banner mod-cover mod-1" id="modulo-1"><span class="spark" style="top:14%;left:56%"></span><span class="spark s2" style="top:70%;left:8%"></span><span class="spark s3" style="top:22%;left:94%"></span><span class="spark s2" style="top:84%;left:88%"></span>
+  <div class="wrap">
+    <div class="banner-text">
+      <span class="kicker">PEP &amp; PrEP · APS</span>
+      <p class="big">MÓDULO 1</p>
+      <h2>PrEP em Evidência</h2>
+      <p class="lead">Da compreensão à prática na APS</p>
+      <div class="dots" aria-hidden="true"><i style="background:#2bb5a4"></i><i style="background:#ef6f86"></i><i style="background:#9b7be8"></i><i style="background:#f4a04b"></i></div>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="ring r2"></span><span class="core"><svg class="i"><use href="#i-pill"/></svg></span><span class="chip" style="--a:-90deg;--cc:#12838a;--d:0.0s"><svg class="i"><use href="#i-shield"/></svg></span><span class="chip" style="--a:-30deg;--cc:#2a72c9;--d:0.6s"><svg class="i"><use href="#i-calcheck"/></svg></span><span class="chip" style="--a:30deg;--cc:#d64560;--d:1.2s"><svg class="i"><use href="#i-tube"/></svg></span><span class="chip" style="--a:90deg;--cc:#e08a0b;--d:1.8s"><svg class="i"><use href="#i-chat"/></svg></span><span class="chip" style="--a:150deg;--cc:#d64560;--d:2.4s"><svg class="i"><use href="#i-heart"/></svg></span><span class="chip" style="--a:210deg;--cc:#1f9a6a;--d:3.0s"><svg class="i"><use href="#i-target"/></svg></span></div>
+  </div>
+</section>
+<div class="prose" style="margin-top:20px"><p>A profilaxia pré-exposição ao HIV (PrEP) integra as estratégias de prevenção combinada e pode ser ofertada na APS. Sua utilização envolve avaliação clínica, orientações sobre o uso da profilaxia e acompanhamento periódico, conforme as recomendações do Ministério da Saúde <span class="cite">(Brasil, 2025b)</span>.</p></div>
+<div class="goals"><h3>Neste módulo, você irá:</h3><ul>
+  <li>Compreender os fundamentos da PrEP e a sua importância na prevenção do HIV;</li>
+  <li>Reconhecer situações em que a PrEP pode ser indicada; e</li>
+  <li>Identificar os cuidados necessários à avaliação e ao acompanhamento das pessoas em uso da profilaxia.</li></ul></div>
+
+<section class="section" id="s1-1">
+  <div class="sec-head"><span class="sec-num">1.1</span><h2>Por que falar de PrEP na Atenção Primária à Saúde?</h2></div>
+  <div class="prose"><p>A APS representa um espaço estratégico para ampliar o acesso à prevenção do HIV, considerando sua atuação territorial, o vínculo com a população e a continuidade do cuidado. Nesse cenário, a oferta da PrEP possibilita incorporar uma estratégia de prevenção biomédica às práticas de atenção à saúde sexual <span class="cite">(Brasil, 2024a)</span>.</p></div>
+  <div class="steps">
+    <div class="step tone-orange"><span class="n">1</span><div><h3>Prevenção do HIV: uma abordagem ampla</h3><p>A prevenção do HIV deve considerar as situações de exposição ao vírus e os contextos de vulnerabilidade, reconhecendo que as necessidades de proteção são influenciadas por condições individuais, sociais e estruturais <span class="cite">(Brasil, 2025a)</span>.</p></div><span class="ico"><svg class="i"><use href="#i-heart"/></svg></span></div>
+    <div class="step tone-purple"><span class="n">2</span><div><h3>Prevenção combinada: diferentes estratégias, um cuidado integral</h3><p>A prevenção combinada articula intervenções biomédicas, comportamentais e estruturais, permitindo associar diferentes medidas de prevenção de acordo com as necessidades e os contextos de vida das pessoas <span class="cite">(Brasil, 2025b)</span>.</p></div><span class="ico"><svg class="i"><use href="#i-shield"/></svg></span></div>
+    <div class="step tone-green"><span class="n">3</span><div><h3>PrEP: uma estratégia de prevenção do HIV</h3><p>A PrEP consiste no uso de medicamentos antirretrovirais por pessoas sem infecção pelo HIV, com o objetivo de reduzir o risco de aquisição do vírus. As evidências demonstram sua eficácia, especialmente quando utilizada com adesão adequada, respeitando as indicações e modalidades recomendadas <span class="cite">(Brasil, 2025b; O Murchu et al., 2022)</span>.</p></div><span class="ico"><svg class="i"><use href="#i-pill"/></svg></span></div>
+    <div class="step tone-blue"><span class="n">4</span><div><h3>Por que a APS é um espaço estratégico?</h3><p>A atuação territorial e o acompanhamento longitudinal permitem que as equipes da APS identifiquem necessidades de prevenção, ofereçam orientações e incorporem a PrEP ao cuidado em saúde sexual. Entretanto, sua implementação requer profissionais qualificados, organização dos processos de trabalho e enfrentamento de barreiras que dificultam o acesso à profilaxia <span class="cite">(Brasil, 2024a; Santos et al., 2026)</span>.</p></div><span class="ico"><svg class="i"><use href="#i-clinic"/></svg></span></div>
+  </div>
+</section>
+
+<section class="section" id="s1-2">
+  <div class="sec-head"><span class="sec-num">1.2</span><h2>PrEP: o essencial</h2></div>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Toque em cada card para ver a resposta. Toque de novo para voltar à pergunta.</p>
+  <div class="cards">
+    <button class="flash tone-orange" aria-pressed="false">
+      <span class="face front"><span class="q"><span class="n">1</span>O que é a PrEP?</span><span class="ico big-ico"><svg class="i"><use href="#i-pill"/></svg></span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para virar</span></span>
+      <span class="face back"><h4>1 · O que é a PrEP?</h4><p>A profilaxia pré-exposição ao HIV (PrEP) é uma estratégia biomédica que utiliza medicamentos antirretrovirais antes de possíveis exposições ao vírus, com o objetivo de prevenir a infecção. É destinada a pessoas que não vivem com HIV e se diferencia da terapia antirretroviral (TARV), utilizada no tratamento de pessoas que vivem com HIV (Brasil, 2025b).</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar à pergunta</span></span>
+    </button>
+    <button class="flash tone-purple" aria-pressed="false">
+      <span class="face front"><span class="q"><span class="n">2</span>Como a PrEP funciona?</span><span class="ico big-ico"><svg class="i"><use href="#i-gear"/></svg></span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para virar</span></span>
+      <span class="face back"><h4>2 · Como a PrEP funciona?</h4><p>Os antirretrovirais utilizados na PrEP atuam sobre etapas da replicação do HIV, reduzindo a possibilidade de estabelecimento da infecção após uma exposição. A proteção depende de concentrações adequadas dos medicamentos no organismo, que variam conforme a modalidade utilizada e características relacionadas à pessoa e ao tipo de exposição (Brasil, 2025b).</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar à pergunta</span></span>
+    </button>
+    <button class="flash tone-green" aria-pressed="false">
+      <span class="face front"><span class="q"><span class="n">3</span>Qual é o benefício da PrEP na prevenção do HIV?</span><span class="ico big-ico"><svg class="i"><use href="#i-shield"/></svg></span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para virar</span></span>
+      <span class="face back"><h4>3 · Qual é o benefício da PrEP?</h4><p>A PrEP oral é eficaz na redução do risco de aquisição do HIV, especialmente quando utilizada com adesão adequada. Entretanto, não protege contra outras infecções sexualmente transmissíveis (ISTs), devendo integrar a prevenção combinada, juntamente com outras medidas de proteção e cuidado em saúde sexual (O Murchu et al., 2022; Brasil, 2025b).</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar à pergunta</span></span>
+    </button>
+    <button class="flash tone-blue" aria-pressed="false">
+      <span class="face front"><span class="q"><span class="n">4</span>Quais são as modalidades de PrEP?</span><span class="ico big-ico"><svg class="i"><use href="#i-cal"/></svg></span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para virar</span></span>
+      <span class="face back"><h4>4 · Quais são as modalidades?</h4><p>O Protocolo Clínico e Diretrizes Terapêuticas brasileiro de 2025 estabelece duas modalidades de PrEP oral:</p><p><b>PrEP oral diária:</b> utilização de antirretrovirais diariamente, conforme o esquema recomendado para pessoas elegíveis à profilaxia.</p><p><b>PrEP oral sob demanda (2 + 1 + 1):</b> utilização planejada de antirretrovirais antes e após a relação sexual, indicada exclusivamente para pessoas que atendam aos critérios estabelecidos no protocolo.</p><p>A escolha da modalidade deve considerar a elegibilidade, as características das exposições e as necessidades individuais (Brasil, 2025b).</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar à pergunta</span></span>
+    </button>
+  </div>
+
+  <div class="more">
+    <div class="more-h"><span class="ico" style="--tc:var(--m1)"><svg class="i"><use href="#i-book"/></svg></span><div><h3>Saiba mais</h3><p>PrEP injetável de longa duração</p></div></div>
+    <p style="display:flex;gap:12px;align-items:flex-start"><svg class="i" style="font-size:26px;color:var(--t-orange);margin-top:2px"><use href="#i-syringe"/></svg><span>A PrEP injetável de longa duração, como o cabotegravir, representa uma alternativa de prevenção do HIV. No Brasil, sua incorporação ao SUS está em processo de avaliação, sendo importante acompanhar as recomendações e decisões oficiais.</span></p>
+    <p style="font-weight:600;color:var(--m1);margin-top:14px">Acesse os documentos:</p>
+    <div class="docs">
+      <div class="doc"><b>Ministério da Saúde (2026) — Nota Técnica nº 8/2026</b><span>Informações sobre as modalidades de PrEP e sua disponibilidade no SUS.</span>
+        <div class="row"><a class="btn" href="https://www.gov.br/aids/pt-br/central-de-conteudo/notas-tecnicas/2026/nota-tecnica-no-8_2026-cgha_dathi_svsa_ms.pdf" target="_blank" rel="noopener">Acessar documento <svg class="i"><use href="#i-ext"/></svg></a><button class="copy" data-copy="https://www.gov.br/aids/pt-br/central-de-conteudo/notas-tecnicas/2026/nota-tecnica-no-8_2026-cgha_dathi_svsa_ms.pdf">Copiar endereço</button></div>
+        <span class="url">https://www.gov.br/aids/pt-br/central-de-conteudo/notas-tecnicas/2026/nota-tecnica-no-8_2026-cgha_dathi_svsa_ms.pdf</span></div>
+      <div class="doc"><b>Conitec (2026) — Relatório preliminar de avaliação do cabotegravir</b><span>Informações sobre a análise da tecnologia para possível incorporação ao SUS.</span>
+        <div class="row"><a class="btn" href="https://www.gov.br/conitec/pt-br/midias/consultas/relatorios/2026/relatorio-preliminar-cabotegravir-cp-76.pdf" target="_blank" rel="noopener">Acessar documento <svg class="i"><use href="#i-ext"/></svg></a><button class="copy" data-copy="https://www.gov.br/conitec/pt-br/midias/consultas/relatorios/2026/relatorio-preliminar-cabotegravir-cp-76.pdf">Copiar endereço</button></div>
+        <span class="url">https://www.gov.br/conitec/pt-br/midias/consultas/relatorios/2026/relatorio-preliminar-cabotegravir-cp-76.pdf</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s1-3">
+  <div class="sec-head"><span class="sec-num">1.3</span><h2>Quando pensar em PrEP?</h2></div>
+  <div class="prose"><p>A compreensão das modalidades de PrEP e de sua utilização na prevenção do HIV contribui para o reconhecimento de situações em que essa estratégia pode ser oferecida. Na APS, a identificação dessas oportunidades deve considerar as práticas sexuais, os contextos de vulnerabilidade, a possibilidade de exposições futuras e as preferências da pessoa, sem restringir a discussão sobre a profilaxia ao pertencimento a grupos populacionais específicos <span class="cite">(Brasil, 2025b)</span>.</p></div>
+  <div class="cascade" style="margin-top:20px">
+    <div class="step tone-orange"><span class="n">1</span><span class="ico"><svg class="i"><use href="#i-alert"/></svg></span><div><span class="pill-tag">Exposição</span><h3>Quais situações devem ser consideradas?</h3><p>Práticas sexuais com possibilidade de exposição ao HIV, diagnóstico recente de infecção sexualmente transmissível (IST), uso anterior de PEP e compartilhamento de equipamentos para uso de drogas injetáveis são situações que podem indicar oportunidades para discutir a PrEP (Brasil, 2025b; Chou et al., 2023).</p></div></div>
+    <svg class="i down" style="color:var(--t-orange)"><use href="#i-down"/></svg>
+    <div class="step tone-purple"><span class="n">2</span><span class="ico"><svg class="i"><use href="#i-cal"/></svg></span><div><span class="pill-tag">Necessidades futuras</span><h3>Existe possibilidade de novas exposições?</h3><p>A necessidade de PrEP pode variar ao longo da vida, conforme as práticas, as parcerias e os contextos de exposição ao HIV. Por isso, é importante considerar tanto a possibilidade de exposições recorrentes quanto a necessidade de proteção em determinados períodos, sem pressupor que essas situações sejam permanentes (Brasil, 2025b).</p></div></div>
+    <svg class="i down" style="color:var(--t-purple)"><use href="#i-down"/></svg>
+    <div class="step tone-green"><span class="n">3</span><span class="ico"><svg class="i"><use href="#i-person"/></svg></span><div><span class="pill-tag">Individualização</span><h3>Quais são as necessidades e preferências da pessoa?</h3><p>A abordagem deve incluir escuta qualificada, diálogo sobre as possibilidades de prevenção e avaliação do interesse pela PrEP, favorecendo a decisão compartilhada e respeitando a autonomia e o contexto de vida de cada pessoa (Brasil, 2025b).</p></div></div>
+  </div>
+  <div class="alert"><span class="b"><svg class="i"><use href="#i-alert"/></svg>Atenção</span><p>Esses elementos orientam o reconhecimento de oportunidades para discutir a PrEP, mas não substituem a avaliação clínica necessária para seu início.</p></div>
+</section>
+
+<section class="section" id="s1-4">
+  <div class="sec-head"><span class="sec-num">1.4</span><h2>Antes de iniciar a PrEP, o que preciso avaliar?</h2></div>
+  <div class="prose"><p>Uma vez identificada a possibilidade de utilização da PrEP, é necessário verificar os critérios de elegibilidade, excluir a infecção pelo HIV e avaliar as condições clínicas relacionadas à segurança da profilaxia oral. Essa avaliação deve considerar as particularidades de cada pessoa e as recomendações estabelecidas pelo Ministério da Saúde <span class="cite">(Brasil, 2025a)</span>.</p>
+  <p>O fluxograma a seguir apresenta as principais etapas da avaliação inicial, auxiliando os profissionais da APS na tomada de decisões relacionadas ao início da PrEP oral.</p></div>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Fluxograma interativo: responda cada pergunta para chegar à conduta.</p>
+  <div class="flow" data-flow="prep"></div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024b, 2025a).</p>
+
+  <div class="prose" style="margin-top:20px"><p>O fluxograma apresenta as principais decisões envolvidas na avaliação inicial para a PrEP oral. Para complementar essas etapas, o quadro a seguir reúne os aspectos clínicos, laboratoriais e preventivos que devem ser considerados pelos profissionais de saúde, conforme as recomendações do Ministério da Saúde <span class="cite">(Brasil, 2025a)</span>.</p></div>
+  <h3 class="tbl-title">Quadro: aspectos a considerar na avaliação inicial para PrEP oral</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Dimensão</th><th>Aspectos a considerar</th></tr></thead>
+    <tbody>
+      <tr><td>Avaliação clínica</td><td>Necessidades de prevenção, histórico de saúde, medicamentos em uso, fatores de risco para comprometimento renal e condições clínicas específicas.</td></tr>
+      <tr><td>HIV</td><td>Testagem para HIV e investigação de exposições recentes, sinais e sintomas sugestivos de infecção aguda.</td></tr>
+      <tr><td>Outras ISTs</td><td>Testagem para sífilis e investigação de clamídia e gonococo, considerando as práticas sexuais e a disponibilidade dos métodos diagnósticos.</td></tr>
+      <tr><td>Hepatites virais</td><td>Testagem para hepatites B e C e avaliação das condições clínicas relacionadas.</td></tr>
+      <tr><td>Função renal</td><td>Dosagem de creatinina sérica e estimativa da depuração de creatinina, conforme a faixa etária e os fatores de risco renal previstos no protocolo.</td></tr>
+      <tr><td>Vacinação</td><td>Verificação da situação vacinal e das indicações de imunização contra hepatites A e B e HPV.</td></tr>
+    </tbody></table></div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2025b).</p>
+  <div class="note"><b>Atenção:</b> A testagem para HIV é indispensável antes do início da PrEP oral, acompanhada da avaliação de possível infecção aguda. Os demais exames devem seguir as recomendações do Ministério da Saúde, considerando que, em determinadas situações, seus resultados podem ser avaliados após a primeira dispensação, sem comprometer o início oportuno da profilaxia (Brasil, 2025b).</div>
+</section>
+
+<section class="section" id="s1-5">
+  <div class="sec-head"><span class="sec-num">1.5</span><h2>Continuidade do cuidado na PrEP</h2></div>
+  <div class="prose"><p>O início da PrEP oral representa uma etapa do cuidado preventivo, que deve prosseguir com orientações sobre o uso adequado dos antirretrovirais e acompanhamento periódico. Embora sua efetividade esteja relacionada à adesão, a continuidade da profilaxia pode ser influenciada por dificuldades na utilização dos medicamentos, mudanças nas necessidades de prevenção e barreiras de acesso aos serviços de saúde. Assim, o acompanhamento deve integrar o apoio individualizado à adesão e o monitoramento clínico, considerando as particularidades de cada pessoa <span class="cite">(O Murchu et al., 2022; Merle et al., 2024; Brasil, 2025b)</span>.</p>
+  <p>Para orientar essas ações na prática, o quadro a seguir apresenta dois pilares fundamentais para a continuidade do cuidado na PrEP oral.</p></div>
+  <div class="house">
+    <div class="roof">O que orientar e<br>monitorar na prática?</div>
+    <div class="pillars">
+      <div class="pillar tone-green"><h4>Como apoiar o uso adequado da PrEP?</h4><ul>
+        <li><svg class="i"><use href="#i-search"/></svg>Identificar dificuldades relacionadas à utilização da profilaxia.</li>
+        <li><svg class="i"><use href="#i-clock"/></svg>Orientar sobre esquecimentos de doses e possíveis efeitos adversos.</li>
+        <li><svg class="i"><use href="#i-target"/></svg>Construir estratégias de adesão compatíveis com a rotina e as preferências da pessoa.</li></ul></div>
+      <div class="pillar tone-purple"><h4>O que avaliar durante o acompanhamento?</h4><ul>
+        <li><svg class="i"><use href="#i-tube"/></svg>Realizar testagem periódica para HIV e rastreamento de outras ISTs, conforme o protocolo.</li>
+        <li><svg class="i"><use href="#i-drop"/></svg>Monitorar a função renal de acordo com as indicações do PCDT.</li>
+        <li><svg class="i"><use href="#i-alert"/></svg>Avaliar possíveis efeitos adversos e intercorrências clínicas.</li>
+        <li><svg class="i"><use href="#i-refresh"/></svg>Reavaliar periodicamente as necessidades de prevenção e a continuidade da profilaxia.</li></ul></div>
+    </div>
+    <div class="base"></div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2025b).</p>
+</section>
+
+<section class="section" id="caso-1">
+  <h2 class="h-plain" style="color:var(--m1);border-color:var(--m1)">Hora da prática</h2>
+  <div class="case">
+    <div class="case-h"><span class="ico"><svg class="i"><use href="#i-person"/></svg></span><span>Caso clínico</span></div>
+    <p>Durante uma consulta de enfermagem em uma Unidade Básica de Saúde (UBS), uma mulher de 29 anos procura atendimento por apresentar corrimento genital e desconforto ao urinar há alguns dias.</p>
+    <p>Na anamnese, relata relações sexuais sem preservativo com diferentes parceiros nos últimos meses, histórico de tratamento para uma infecção sexualmente transmissível (IST) e dificuldades para negociar o uso do preservativo em determinadas situações.</p>
+    <p>Durante o atendimento, manifesta preocupação com a possibilidade de adquirir HIV, mas desconhece a PrEP. Não relata exposição sexual nas últimas 72 horas nem sinais ou sintomas sugestivos de infecção aguda pelo HIV.</p>
+    <p>Diante dessas informações, o profissional identifica uma oportunidade para ampliar a abordagem preventiva, além de investigar e manejar a queixa inicial.</p>
+  </div>
+  <div class="quiz" data-quiz="c1">
+    <div class="ask"><span class="qi">?</span><div><h4>Considerando essa situação, qual seria a conduta mais adequada?</h4><small>Selecione uma alternativa para ver o feedback.</small></div></div>
+    <div class="opts">
+      <label class="opt tone-green"><input type="radio" name="c1" value="A" id="c1-a"><span class="letter">A</span><span class="txt">Concentrar o atendimento na investigação e no tratamento da queixa apresentada, deixando a abordagem sobre prevenção do HIV para outra consulta.</span></label>
+      <label class="opt tone-blue"><input type="radio" name="c1" value="B" id="c1-b"><span class="letter">B</span><span class="txt">Investigar a queixa inicial e, de forma integrada, abordar a prevenção combinada, apresentar a PrEP como possibilidade e oferecer avaliação individualizada para seu início.</span></label>
+      <label class="opt tone-purple"><input type="radio" name="c1" value="C" id="c1-c"><span class="letter">C</span><span class="txt">Solicitar testagem para HIV e, diante de resultado não reagente, iniciar imediatamente a PrEP, independentemente de avaliação adicional.</span></label>
+      <label class="opt tone-orange"><input type="radio" name="c1" value="D" id="c1-d"><span class="letter">D</span><span class="txt">Orientar o uso de preservativos e considerar a PrEP somente se ocorrer uma nova infecção sexualmente transmissível.</span></label>
+    </div>
+    <div class="fb" hidden></div>
+    <template data-fb="A" data-ok="0"><h4>Alternativa A — Incorreta.</h4><p>Embora a investigação e o manejo da queixa sejam necessários, a consulta também constitui uma oportunidade para abordar a prevenção do HIV. Adiar essa discussão pode representar uma oportunidade perdida de cuidado preventivo.</p></template>
+    <template data-fb="B" data-ok="1"><h4>Alternativa B — Correta!</h4><p>A conduta integra o manejo da queixa inicial à prevenção combinada do HIV. As situações de exposição relatadas justificam uma conversa sobre PrEP, respeitando a autonomia, as necessidades e as preferências da pessoa. Havendo interesse, o profissional deve realizar a avaliação de elegibilidade, a testagem para HIV e a avaliação clínica prevista no protocolo para definir o início da profilaxia.</p></template>
+    <template data-fb="C" data-ok="0"><h4>Alternativa C — Incorreta.</h4><p>O resultado não reagente na testagem para HIV é necessário, mas não é suficiente, isoladamente, para iniciar a PrEP. Também devem ser considerados os critérios de elegibilidade, a possibilidade de infecção aguda e as condições clínicas relacionadas à segurança da profilaxia.</p></template>
+    <template data-fb="D" data-ok="0"><h4>Alternativa D — Incorreta.</h4><p>O preservativo integra a prevenção combinada, mas sua orientação não substitui a discussão sobre outras estratégias disponíveis. A oferta de PrEP não depende da ocorrência de uma nova IST, devendo considerar as necessidades individuais de prevenção.</p></template>
+  </div>
+  <p class="source">Fonte: Caso fictício elaborado pela autora com base em Brasil (2025b).</p>
+</section>
+</div>
+
+<!-- ============ MÓDULO 2 ============ -->
+<div class="mod-2" data-mod="Módulo 2 · PEP: reconhecer e agir">
+<section class="banner mod-cover mod-2" id="modulo-2"><span class="spark" style="top:14%;left:56%"></span><span class="spark s2" style="top:70%;left:8%"></span><span class="spark s3" style="top:22%;left:94%"></span><span class="spark s2" style="top:84%;left:88%"></span>
+  <div class="wrap">
+    <div class="banner-text">
+      <span class="kicker">PEP &amp; PrEP · APS</span>
+      <p class="big">MÓDULO 2</p>
+      <h2>PEP: reconhecer e agir</h2>
+      <p class="lead">O cuidado oportuno na Atenção Primária à Saúde</p>
+      <div class="dots" aria-hidden="true"><i style="background:#2bb5a4"></i><i style="background:#ef6f86"></i><i style="background:#9b7be8"></i><i style="background:#f4a04b"></i></div>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="ring r2"></span><span class="core"><svg class="i"><use href="#i-clock"/></svg></span><span class="chip" style="--a:-90deg;--cc:#e08a0b;--d:0.0s"><svg class="i"><use href="#i-bolt"/></svg></span><span class="chip" style="--a:-30deg;--cc:#2a72c9;--d:0.6s"><svg class="i"><use href="#i-syringe"/></svg></span><span class="chip" style="--a:30deg;--cc:#cf4459;--d:1.2s"><svg class="i"><use href="#i-drop"/></svg></span><span class="chip" style="--a:90deg;--cc:#1f9a6a;--d:1.8s"><svg class="i"><use href="#i-aid"/></svg></span><span class="chip" style="--a:150deg;--cc:#7b4fcf;--d:2.4s"><svg class="i"><use href="#i-tube"/></svg></span><span class="chip" style="--a:210deg;--cc:#cf4459;--d:3.0s"><svg class="i"><use href="#i-calcheck"/></svg></span></div>
+  </div>
+</section>
+<div class="prose" style="margin-top:20px"><p>Além das estratégias de prevenção utilizadas antes de uma possível exposição ao HIV, a prevenção combinada contempla medidas que podem ser adotadas após uma exposição. Nesse contexto, a profilaxia pós-exposição ao HIV (PEP) constitui uma medida de urgência, cuja efetividade está relacionada ao início oportuno da profilaxia antirretroviral <span class="cite">(Brasil, 2024b)</span>.</p></div>
+<div class="goals"><h3>Neste módulo, você irá:</h3><ul>
+  <li>Reconhecer situações que podem demandar a utilização da PEP;</li>
+  <li>Compreender os critérios de indicação e as recomendações para seu uso; e</li>
+  <li>Identificar os cuidados relacionados ao acompanhamento e à continuidade da assistência.</li></ul></div>
+
+<section class="section" id="s2-1">
+  <div class="sec-head"><span class="sec-num">2.1</span><h2>PEP: quando pensar?</h2></div>
+  <div class="prose"><p>A profilaxia pós-exposição ao HIV (PEP) consiste na utilização de medicamentos antirretrovirais após uma possível exposição ao vírus, com a finalidade de reduzir o risco de infecção. Sua indicação depende da avaliação das características da exposição e das condições clínicas da pessoa, conforme as recomendações vigentes <span class="cite">(Brasil, 2024b; Tanner et al., 2025)</span>.</p>
+  <p>Para reconhecer situações que podem demandar essa avaliação, o painel a seguir apresenta três contextos de exposição ao HIV.</p></div>
+  <div class="ask" style="background:var(--navy);color:var(--surface)"><span class="qi" style="background:var(--surface);color:var(--navy)">?</span><h4 style="color:var(--surface);text-transform:uppercase">Em quais situações considerar a PEP?</h4></div>
+  <div class="steps" style="margin-top:12px">
+    <div class="step tone-green" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-heart"/></svg></span><div><h3 style="text-transform:none;font-size:19px">Exposição sexual</h3><p>Relações sexuais com possibilidade de exposição ao HIV, considerando as práticas envolvidas, o uso de preservativos e as circunstâncias da ocorrência.</p></div></div>
+    <div class="step tone-blue" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-syringe"/></svg></span><div><h3 style="text-transform:none;font-size:19px">Exposição a material biológico</h3><p>Acidentes com perfurocortantes ou contato de material biológico potencialmente infectante com mucosas ou pele não íntegra.</p></div></div>
+    <div class="step tone-purple" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-careheart"/></svg></span><div><h3 style="text-transform:none;font-size:19px">Violência sexual</h3><p>Situações que exigem acolhimento imediato, avaliação da exposição e atenção integral, incluindo medidas profiláticas quando indicadas.</p></div></div>
+  </div>
+  <div class="alert"><span class="b"><svg class="i"><use href="#i-alert"/></svg>Atenção</span><p>A identificação dessas situações não determina, isoladamente, a indicação da PEP. É necessário avaliar as características da exposição e o tempo transcorrido, conforme os critérios estabelecidos pelo Ministério da Saúde (Brasil, 2024b).</p></div>
+</section>
+
+<section class="section" id="s2-2">
+  <div class="sec-head"><span class="sec-num">2.2</span><h2>A exposição aconteceu. E agora, o que avaliar?</h2></div>
+  <div class="prose"><p>Após reconhecer uma situação de possível exposição ao HIV, é necessário avaliar se a profilaxia pós-exposição (PEP) está indicada. Essa decisão considera o material biológico envolvido, o tipo de exposição, o tempo transcorrido e o resultado da testagem para HIV da pessoa exposta. Quando disponível, a situação sorológica da pessoa-fonte também contribui para a definição da conduta <span class="cite">(Brasil, 2024b)</span>.</p>
+  <p>Para orientar essa avaliação, o fluxograma a seguir apresenta as quatro etapas fundamentais para a decisão clínica, conforme o Ministério da Saúde.</p></div>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Fluxograma interativo de avaliação da PEP: responda cada etapa.</p>
+  <div class="flow" data-flow="pep"></div>
+
+  <h3 class="tbl-title" style="text-align:center;margin-top:30px">Definição da conduta</h3>
+  <div class="quad">
+    <div class="qcard tone-green"><header><svg class="i"><use href="#i-check"/></svg>PEP indicada</header><p>Iniciar a profilaxia o mais precocemente possível, conforme o esquema recomendado, sem aguardar exames complementares que possam atrasar seu início. Organizar o acompanhamento.</p></div>
+    <div class="qcard tone-pink"><header><svg class="i"><use href="#i-x"/></svg>PEP não indicada</header><p>Oferecer orientações sobre prevenção combinada e avaliar a necessidade de testagem e seguimento.</p></div>
+    <div class="qcard tone-blue"><header><svg class="i"><use href="#i-pin"/></svg>Necessidade de avaliação ou encaminhamento</header><p>Articular o atendimento com o serviço de referência, conforme a complexidade do caso, evitando atrasos na assistência.</p></div>
+    <div class="qcard tone-purple"><header><svg class="i"><use href="#i-shield"/></svg>Risco contínuo de exposição ao HIV</header><p>Avaliar a possibilidade de PrEP como estratégia de prevenção, considerando os critérios de elegibilidade e o momento clínico apropriado.</p></div>
+  </div>
+  <p class="source">Fonte: Adaptado de Brasil (2024b).</p>
+</section>
+
+<section class="section" id="s2-3">
+  <div class="sec-head"><span class="sec-num">2.3</span><h2>PEP está indicada. Como iniciar?</h2></div>
+  <div class="prose"><p>Após a avaliação da exposição e a confirmação da indicação da PEP, a prioridade é iniciar a profilaxia antirretroviral o mais precocemente possível. A escolha do esquema deve considerar as condições clínicas da pessoa, as possíveis contraindicações e interações medicamentosas, sem que a realização de exames complementares retarde o início da profilaxia <span class="cite">(Brasil, 2024b)</span>.</p>
+  <p>Para apoiar a prescrição e as orientações iniciais, o guia rápido a seguir apresenta o esquema preferencial recomendado pelo Ministério da Saúde.</p></div>
+  <div class="more" style="display:flex;gap:16px;align-items:center"><span class="ico tone-green"><svg class="i"><use href="#i-pill"/></svg></span><div><h3 style="font-family:var(--f-display);font-size:28px;color:var(--t-green)">Guia rápido</h3><p style="font-weight:600;color:var(--t-green);text-transform:uppercase;font-size:14px">Esquema antirretroviral preferencial para PEP ao HIV</p></div></div>
+  <div class="guide">
+    <div class="guide-h"><span>Medicamento</span><span>Posologia</span></div>
+    <div class="guide-row tone-blue"><div><span class="ico"><svg class="i"><use href="#i-pill"/></svg></span><span class="med">Tenofovir (TDF) 300 mg + lamivudina (3TC) 300 mg</span></div><div><span class="ico"><svg class="i"><use href="#i-clock"/></svg></span><b>1 comprimido via oral, 1x ao dia</b></div></div>
+    <div class="guide-row tone-green"><div><span class="ico"><svg class="i"><use href="#i-pill"/></svg></span><span class="med">Dolutegravir (DTG) 50 mg</span></div><div><span class="ico"><svg class="i"><use href="#i-clock"/></svg></span><b>1 comprimido via oral, 1x ao dia</b></div></div>
+  </div>
+  <div class="days"><span class="cal">28</span>O tratamento da PEP deve ter duração de 28 dias consecutivos.</div>
+  <div class="check3">
+    <h4><svg class="i"><use href="#i-clip"/></svg>Antes de orientar o uso, verifique:</h4>
+    <div><b><svg class="i"><use href="#i-pill"/></svg>Medicamentos em uso</b>Identificar possíveis interações medicamentosas.</div>
+    <div><b><svg class="i"><use href="#i-steth"/></svg>Condições clínicas</b>Avaliar situações que possam exigir ajustes ou esquemas alternativos.</div>
+    <div><b><svg class="i"><use href="#i-chat"/></svg>Orientações e adesão</b>Esclarecer como utilizar os medicamentos, verificar a compreensão da pessoa e identificar possíveis dificuldades para completar o tratamento.</div>
+  </div>
+  <div class="alert"><span class="b"><svg class="i"><use href="#i-alert"/></svg>Atenção</span><p>O esquema apresentado corresponde à recomendação preferencial do PCDT brasileiro. Sua utilização deve considerar as orientações específicas para idade, peso, função renal e outras condições clínicas. Quando houver necessidade de esquema alternativo, devem ser consultadas as recomendações do protocolo vigente.</p></div>
+  <p class="source">Fonte: Adaptado de Brasil (2024).</p>
+</section>
+
+<section class="section" id="s2-4">
+  <div class="sec-head"><span class="sec-num">2.4</span><h2>PEP no tempo certo</h2></div>
+  <div class="prose"><p>Além da escolha do esquema antirretroviral adequado, o tempo transcorrido entre a exposição ao HIV e o início da profilaxia é fundamental para a efetividade da PEP. Por se tratar de uma medida de urgência, recomenda-se iniciar os antirretrovirais o mais precocemente possível, preferencialmente nas primeiras 24 horas e respeitando o limite de 72 horas após a exposição de risco <span class="cite">(Brasil, 2024b; Allan-Blitz; Mayer, 2024; Tanner et al., 2025)</span>.</p>
+  <p>Para compreender essa janela de oportunidade e orientar a conduta conforme o tempo transcorrido, explore os marcos da linha do tempo a seguir.</p></div>
+  <h3 class="tbl-title" style="text-align:center;color:var(--navy)">Quando iniciar a PEP?</h3>
+  <p style="text-align:center;color:var(--muted)">A PEP pode ser iniciada em até 72h após a exposição</p>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Clique em cada marco da linha do tempo para visualizar as orientações correspondentes.</p>
+  <div class="tabs" data-tabs>
+    <div class="tl" role="tablist">
+      <button class="tl-btn tone-purple" role="tab" aria-selected="true" data-panel="tl-1"><span class="tl-dot"><svg class="i"><use href="#i-alert"/></svg></span><b>1 · Exposição de risco</b><small>0 h</small></button>
+      <button class="tl-btn tone-green" role="tab" aria-selected="false" data-panel="tl-2"><span class="tl-dot"><svg class="i"><use href="#i-bolt"/></svg></span><b>2 · O mais cedo possível</b><small>até 24 h</small></button>
+      <button class="tl-btn tone-blue" role="tab" aria-selected="false" data-panel="tl-3"><span class="tl-dot"><svg class="i"><use href="#i-clock"/></svg></span><b>3 · Até 72 horas</b><small>24–72 h</small></button>
+      <button class="tl-btn tone-pink" role="tab" aria-selected="false" data-panel="tl-4"><span class="tl-dot"><svg class="i"><use href="#i-cal"/></svg></span><b>4 · Após 72 horas</b><small>&gt; 72 h</small></button>
+    </div>
+    <div class="panel tone-purple" id="tl-1" role="tabpanel"><h4>Exposição de risco</h4><p>Momento em que ocorre a possível exposição ao HIV, a partir do qual se considera o intervalo para o início da profilaxia.</p></div>
+    <div class="panel tone-green" id="tl-2" role="tabpanel" hidden><h4>O mais cedo possível</h4><p>A PEP deve ser iniciada preferencialmente nas primeiras 24 horas após a exposição, evitando atrasos desnecessários no atendimento.</p></div>
+    <div class="panel tone-blue" id="tl-3" role="tabpanel" hidden><h4>Até 72 horas</h4><p>A profilaxia pode ser iniciada nesse intervalo, desde que esteja indicada conforme os critérios de avaliação clínica.</p></div>
+    <div class="panel tone-pink" id="tl-4" role="tabpanel" hidden><h4>Após 72 horas</h4><p>A PEP não está indicada. Entretanto, a pessoa deve receber avaliação, testagem, orientações sobre prevenção combinada e acompanhamento conforme suas necessidades.</p></div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024b).</p>
+  <div class="note"><b>Atenção à prática!</b> A coleta de exames complementares não deve retardar o início da PEP quando indicada. O acompanhamento clínico e laboratorial deve ser organizado desde o primeiro atendimento (Brasil, 2024b).</div>
+</section>
+
+<section class="section" id="s2-5">
+  <div class="sec-head"><span class="sec-num">2.5</span><h2>Testagem e acompanhamento</h2></div>
+  <div class="prose"><p>Após o início oportuno da PEP, a continuidade do cuidado requer acompanhamento clínico e laboratorial para avaliar a utilização dos antirretrovirais, identificar possíveis efeitos adversos e realizar a investigação de infecções relacionadas à exposição. Nesse processo, o apoio à adesão e a organização dos retornos são fundamentais para favorecer a conclusão da profilaxia e reduzir perdas de seguimento <span class="cite">(Brasil, 2024b; Allan-Blitz; Mayer, 2024; Tanner et al., 2025)</span>.</p>
+  <p>Para apoiar a organização desse cuidado na APS, a agenda interativa a seguir apresenta as principais etapas do acompanhamento da pessoa exposta.</p></div>
+  <h3 class="tbl-title" style="text-align:center;color:var(--navy)">Como organizar o acompanhamento após a exposição ao HIV?</h3>
+  <p class="callout-int" style="justify-content:center"><svg class="i"><use href="#i-hand-tap"/></svg>Clique em cada etapa para visualizar as orientações correspondentes.</p>
+  <div class="tabs" data-tabs>
+    <div class="agenda" role="tablist">
+      <button class="ag-btn tone-blue" role="tab" aria-selected="true" data-panel="ag-1"><span class="n">1</span><span class="ico"><svg class="i"><use href="#i-clip"/></svg></span><b>Avaliação inicial</b><svg class="i go"><use href="#i-right"/></svg></button>
+      <button class="ag-btn tone-green" role="tab" aria-selected="false" data-panel="ag-2"><span class="n">2</span><span class="ico"><svg class="i"><use href="#i-pill"/></svg></span><b>Durante o uso da PEP</b><svg class="i go"><use href="#i-right"/></svg></button>
+      <button class="ag-btn tone-purple" role="tab" aria-selected="false" data-panel="ag-3"><span class="n">3</span><span class="ico"><svg class="i"><use href="#i-tube"/></svg></span><b>Seguimento laboratorial</b><svg class="i go"><use href="#i-right"/></svg></button>
+      <button class="ag-btn tone-blue" role="tab" aria-selected="false" data-panel="ag-4"><span class="n">4</span><span class="ico"><svg class="i"><use href="#i-chat"/></svg></span><b>Orientações e continuidade do cuidado</b><svg class="i go"><use href="#i-right"/></svg></button>
+    </div>
+    <div class="panel tone-blue" id="ag-1" role="tabpanel"><h4>1 · Avaliação inicial</h4><ul>
+      <li>Realizar testagem para HIV;</li>
+      <li>Investigar outras infecções sexualmente transmissíveis (ISTs) e hepatites virais, conforme as características da exposição;</li>
+      <li>Avaliar condições clínicas, medicamentos em uso e necessidade de exames complementares; e</li>
+      <li>Identificar necessidades de acolhimento, orientações e apoio para o seguimento.</li></ul></div>
+    <div class="panel tone-green" id="ag-2" role="tabpanel" hidden><h4>2 · Durante o uso da PEP</h4><ul>
+      <li>Verificar a adesão ao esquema antirretroviral prescrito;</li>
+      <li>Identificar possíveis efeitos adversos e dificuldades relacionadas ao uso dos medicamentos;</li>
+      <li>Orientar sobre sinais e sintomas que necessitem de reavaliação clínica; e</li>
+      <li>Reforçar a importância de completar os 28 dias de profilaxia.</li></ul></div>
+    <div class="panel tone-purple" id="ag-3" role="tabpanel" hidden><h4>3 · Seguimento laboratorial</h4><ul>
+      <li>Repetir a testagem para HIV na 4ª e na 12ª semanas após o início da PEP, conforme o PCDT brasileiro;</li>
+      <li>Solicitar exames complementares de acordo com as condições clínicas, os resultados iniciais e a possibilidade de toxicidade medicamentosa; e</li>
+      <li>Realizar a investigação e o acompanhamento de outras ISTs e hepatites virais nos períodos recomendados.</li></ul></div>
+    <div class="panel tone-blue" id="ag-4" role="tabpanel" hidden><h4>4 · Orientações e continuidade do cuidado</h4><ul>
+      <li>Reforçar a importância dos retornos programados e da continuidade do acompanhamento;</li>
+      <li>Orientar sobre medidas de prevenção combinada, considerando as necessidades individuais;</li>
+      <li>Avaliar a indicação de PrEP após a conclusão da PEP, especialmente quando houver possibilidade de novas exposições ao HIV; e</li>
+      <li>Articular o cuidado com outros serviços da rede de atenção à saúde, quando necessário.</li></ul></div>
+  </div>
+  <div class="note"><b>Atenção à prática!</b> Um resultado não reagente para HIV na avaliação inicial não exclui a possibilidade de infecção decorrente da exposição recente. Por isso, é fundamental assegurar a testagem de seguimento nos períodos recomendados e orientar a pessoa sobre a importância dos retornos, mesmo após a conclusão dos 28 dias de profilaxia (Brasil, 2024b; Tanner et al., 2025).</div>
+</section>
+
+<section class="section" id="s2-6">
+  <div class="sec-head"><span class="sec-num">2.6</span><h2>Exposição ocupacional e não ocupacional</h2></div>
+  <div class="prose"><p>As exposições ao HIV podem ocorrer em diferentes contextos, exigindo cuidados específicos conforme as circunstâncias do evento. Embora os critérios para indicação da PEP sejam fundamentados na avaliação individualizada do risco, as medidas complementares devem considerar as particularidades das exposições ocupacionais e não ocupacionais <span class="cite">(Brasil, 2024b; Tanner et al., 2025)</span>.</p>
+  <p>Para compreender essas diferenças e orientar as condutas na prática clínica, os cartões interativos a seguir apresentam as características de cada tipo de exposição e os cuidados correspondentes.</p></div>
+  <h3 class="tbl-title">Na prática, o que muda?</h3>
+  <div class="split">
+    <div class="xcard tone-green"><header>Exposição ocupacional</header><div class="body">
+      <span class="ico"><svg class="i"><use href="#i-aid"/></svg></span>
+      <p>Ocorre durante o exercício profissional, envolvendo acidentes com materiais perfurocortantes ou contato de material biológico potencialmente infectante com mucosas ou pele não íntegra.</p>
+      <span class="chip">Exemplos:</span>
+      <ul><li>Perfuração com agulhas ou outros instrumentos contaminados.</li><li>Respingos de sangue nos olhos ou na boca.</li><li>Contato de sangue com feridas ou lesões na pele.</li></ul>
+      <div class="detail" id="oc-1" hidden><h5>Particularidades do cuidado</h5><ul>
+        <li>Realizar a higiene imediata da área atingida, utilizando água e sabão na pele ou água/soro fisiológico nas mucosas.</li>
+        <li>Investigar as circunstâncias do acidente, o material biológico envolvido e a possibilidade de avaliação da pessoa-fonte.</li>
+        <li>Avaliar a situação vacinal e a necessidade de medidas preventivas contra a hepatite B.</li>
+        <li>Registrar e notificar o acidente, conforme as normas de saúde do trabalhador.</li></ul></div>
+      <button class="btn more-btn" aria-expanded="false" aria-controls="oc-1">Ver particularidades do cuidado <svg class="i"><use href="#i-down"/></svg></button>
+    </div></div>
+    <div class="xcard tone-blue"><header>Exposição não ocupacional</header><div class="body">
+      <span class="ico"><svg class="i"><use href="#i-users"/></svg></span>
+      <p>Ocorre fora do contexto das atividades profissionais, incluindo exposições sexuais, compartilhamento de materiais utilizados para injeção de drogas e situações de violência sexual.</p>
+      <span class="chip">Exemplos:</span>
+      <ul><li>Relação sexual sem preservativo ou com rompimento durante o uso.</li><li>Compartilhamento de agulhas e seringas.</li><li>Violência sexual.</li></ul>
+      <div class="detail" id="oc-2" hidden><h5>Particularidades do cuidado</h5><ul>
+        <li>Investigar as circunstâncias da exposição com acolhimento, privacidade e abordagem sem julgamentos.</li>
+        <li>Avaliar a necessidade de investigação, tratamento e medidas preventivas relacionadas a outras ISTs e hepatites virais.</li>
+        <li>Considerar anticoncepção de emergência, quando pertinente.</li>
+        <li>Nas situações de violência sexual, assegurar atendimento integral, notificação compulsória e articulação com a rede de atenção e proteção, conforme as necessidades da pessoa.</li></ul></div>
+      <button class="btn more-btn" aria-expanded="false" aria-controls="oc-2">Ver particularidades do cuidado <svg class="i"><use href="#i-down"/></svg></button>
+    </div></div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024b).</p>
+  <div class="note"><b>Atenção à prática!</b> A classificação da exposição como ocupacional ou não ocupacional orienta os cuidados complementares, mas não determina, isoladamente, a indicação da PEP. Em ambos os contextos, a decisão deve considerar o tipo de exposição, o material biológico envolvido, o tempo transcorrido e a avaliação clínica individualizada, conforme as recomendações do Ministério da Saúde (Brasil, 2024b).</div>
+</section>
+
+<section class="section" id="s2-7">
+  <div class="sec-head"><span class="sec-num">2.7</span><h2>Quando encaminhar?</h2></div>
+  <div class="prose"><p>A APS desempenha papel fundamental no acolhimento, na avaliação inicial e na continuidade do cuidado às pessoas expostas ao HIV. Entretanto, determinadas situações podem exigir suporte especializado ou articulação com outros pontos da Rede de Atenção à Saúde (RAS), de acordo com as necessidades clínicas e os recursos disponíveis <span class="cite">(Brasil, 2024b; Tanner et al., 2025)</span>.</p>
+  <p>Para apoiar a tomada de decisão na prática clínica, os cartões interativos a seguir apresentam situações que podem demandar encaminhamento e as condutas correspondentes na APS.</p></div>
+  <h3 class="tbl-title">Em quais situações é necessário articular o cuidado com outros serviços?</h3>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Clique em cada situação para conhecer as condutas na APS e identificar quando o encaminhamento é necessário.</p>
+  <div class="cards">
+    <button class="flash center tone-green" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-tube"/></svg></span><span class="q">Teste para HIV reagente</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Teste para HIV reagente</h4><ul><li>Prosseguir com a investigação diagnóstica conforme os fluxogramas vigentes.</li><li>Garantir acolhimento, orientação e sigilo.</li><li>Quando confirmada a infecção pelo HIV, organizar a vinculação ao serviço responsável pelo acompanhamento e tratamento, conforme a rede local.</li></ul><p class="lbl">Quando encaminhar?</p><p>Após a confirmação do diagnóstico, assegurar o acesso ao serviço responsável pelo acompanhamento e tratamento do HIV, conforme o fluxo assistencial local.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash center tone-blue" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-steth"/></svg></span><span class="q">Intercorrências clínicas ou dificuldades com o esquema</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Intercorrências clínicas ou dificuldades com o esquema</h4><ul><li>Avaliar a gravidade dos sintomas e possíveis efeitos adversos.</li><li>Investigar interações medicamentosas e condições clínicas que possam comprometer a segurança do tratamento.</li><li>Identificar a necessidade de adequação do esquema antirretroviral.</li></ul><p class="lbl">Quando encaminhar?</p><p>Na presença de intercorrências graves, suspeita de toxicidade importante ou necessidade de avaliação especializada para definição de um esquema alternativo.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash center tone-pink" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-pregnant"/></svg></span><span class="q">Gestação</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Gestação</h4><ul><li>Avaliar a exposição e a indicação da PEP, considerando as recomendações específicas para gestantes.</li><li>Assegurar o acesso oportuno à profilaxia, quando indicada.</li><li>Articular o cuidado com o acompanhamento pré-natal.</li></ul><p class="lbl">Quando encaminhar?</p><p>Quando houver condições clínicas ou obstétricas que exijam avaliação especializada. A gestação, isoladamente, não deve ser considerada motivo para retardar a PEP.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash center tone-purple" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-family"/></svg></span><span class="q">Crianças e adolescentes</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Crianças e adolescentes</h4><ul><li>Realizar acolhimento adequado à faixa etária e às necessidades individuais.</li><li>Considerar as recomendações específicas para escolha e administração dos antirretrovirais.</li><li>Identificar situações de violência ou vulnerabilidade que exijam medidas de proteção.</li></ul><p class="lbl">Quando encaminhar?</p><p>Quando a avaliação clínica, a definição do esquema antirretroviral ou as necessidades de proteção exigirem suporte especializado ou articulação com outros serviços.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash center tone-green" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-careheart"/></svg></span><span class="q">Situações de violência sexual</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Situações de violência sexual</h4><ul><li>Garantir acolhimento humanizado, privacidade e atendimento sem julgamentos.</li><li>Avaliar as necessidades clínicas imediatas, incluindo prevenção de ISTs e gravidez, quando pertinente.</li><li>Realizar a notificação compulsória e articular as medidas de proteção cabíveis, conforme a legislação e os fluxos vigentes.</li></ul><p class="lbl">Quando encaminhar?</p><p>Quando forem necessários procedimentos, avaliações ou medidas de proteção não disponíveis na unidade, assegurando acesso oportuno à rede de atenção às pessoas em situação de violência sexual.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash center tone-blue" aria-pressed="false"><span class="face front"><span class="ico"><svg class="i"><use href="#i-clinic"/></svg></span><span class="q">Necessidade de serviços não disponíveis na APS</span><span class="hint" style="margin-inline:auto"><svg class="i"><use href="#i-right"/></svg>Ver condutas</span></span>
+      <span class="face back"><h4>Necessidade de serviços não disponíveis na APS</h4><ul><li>Identificar quais recursos são necessários e não estão disponíveis na unidade.</li><li>Orientar a pessoa sobre o serviço de referência e organizar o acesso conforme os fluxos locais.</li><li>Manter a comunicação com a rede para favorecer a continuidade do cuidado.</li></ul><p class="lbl">Quando encaminhar?</p><p>Quando a unidade não dispuser dos recursos necessários para avaliação, início da PEP ou manejo de situações clínicas que exijam maior complexidade assistencial.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024b).</p>
+</section>
+</div>
+
+<!-- ============ MÓDULO 3 ============ -->
+<div class="mod-3" data-mod="Módulo 3 · Da urgência à prevenção">
+<section class="banner mod-cover mod-3" id="modulo-3"><span class="spark" style="top:14%;left:56%"></span><span class="spark s2" style="top:70%;left:8%"></span><span class="spark s3" style="top:22%;left:94%"></span><span class="spark s2" style="top:84%;left:88%"></span>
+  <div class="wrap">
+    <div class="banner-text">
+      <span class="kicker">PEP &amp; PrEP · APS</span>
+      <p class="big">MÓDULO 3</p>
+      <h2>Quando a urgência vira oportunidade de prevenção</h2>
+      <p class="lead">Da exposição recente à continuidade da prevenção do HIV na APS</p>
+      <div class="dots" aria-hidden="true"><i style="background:#2bb5a4"></i><i style="background:#ef6f86"></i><i style="background:#9b7be8"></i><i style="background:#f4a04b"></i></div>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="ring r2"></span><span class="core"><svg class="i"><use href="#i-refresh"/></svg></span><span class="chip" style="--a:-90deg;--cc:#cf4459;--d:0.0s"><svg class="i"><use href="#i-clock"/></svg></span><span class="chip" style="--a:-30deg;--cc:#12838a;--d:0.6s"><svg class="i"><use href="#i-pill"/></svg></span><span class="chip" style="--a:30deg;--cc:#2a72c9;--d:1.2s"><svg class="i"><use href="#i-search"/></svg></span><span class="chip" style="--a:90deg;--cc:#e08a0b;--d:1.8s"><svg class="i"><use href="#i-chat"/></svg></span><span class="chip" style="--a:150deg;--cc:#6c47b8;--d:2.4s"><svg class="i"><use href="#i-cal"/></svg></span><span class="chip" style="--a:210deg;--cc:#1f9a6a;--d:3.0s"><svg class="i"><use href="#i-shield"/></svg></span></div>
+  </div>
+</section>
+<div class="prose" style="margin-top:20px"><p>O atendimento para profilaxia pós-exposição ao HIV (PEP) constitui uma oportunidade para reconhecer situações de vulnerabilidade e identificar necessidades de prevenção que ultrapassam a exposição recente. Nesse contexto, a escuta qualificada, a avaliação individualizada e a decisão compartilhada permitem considerar a transição para a profilaxia pré-exposição ao HIV (PrEP), quando indicada, favorecendo o acesso às estratégias de prevenção combinada e a continuidade do cuidado na Atenção Primária à Saúde (APS) <span class="cite">(Brasil, 2024b; Brasil, 2025b; Allan-Blitz; Mayer, 2024)</span>.</p></div>
+<div class="goals"><h3>Neste módulo, você irá:</h3><ul>
+  <li>Reconhecer situações que indiquem necessidade de prevenção contínua;</li>
+  <li>Investigar possíveis exposições recorrentes durante a consulta;</li>
+  <li>Avaliar a possibilidade de transição da PEP para a PrEP;</li>
+  <li>Organizar a continuidade da prevenção na APS.</li></ul></div>
+
+<section class="section" id="s3-1">
+  <div class="sec-head"><span class="sec-num">3.1</span><h2>PEP não precisa ser o fim do cuidado</h2></div>
+  <div class="prose"><p>Durante o atendimento para PEP, a investigação do histórico de exposições ao HIV e das estratégias preventivas anteriormente utilizadas contribui para identificar situações que possam demandar proteção contínua. Nesse sentido, o uso repetido da PEP, especialmente mais de uma vez nos últimos 12 meses, constitui uma oportunidade para avaliar a oferta de PrEP, considerando as práticas sexuais, os contextos de vulnerabilidade e os critérios de elegibilidade estabelecidos pelo Ministério da Saúde <span class="cite">(Brasil, 2024b; Brasil, 2025b)</span>.</p>
+  <p>Para visualizar como essa avaliação pode contribuir para a continuidade da prevenção, observe o esquema a seguir.</p></div>
+  <div class="cascade">
+    <div class="cascade-h">Da PEP à continuidade da prevenção</div>
+    <div class="step tone-green"><span class="n">1</span><span class="ico"><svg class="i"><use href="#i-chat"/></svg></span><div><h3>Acolher e investigar</h3><p>Conhecer as circunstâncias da exposição e o histórico de utilização de PEP, PrEP e outras estratégias preventivas.</p></div></div>
+    <svg class="i down"><use href="#i-down"/></svg>
+    <div class="step tone-blue"><span class="n">2</span><span class="ico"><svg class="i"><use href="#i-search"/></svg></span><div><h3>Reconhecer necessidades</h3><p>Identificar possíveis exposições recorrentes, considerando as práticas sexuais, as situações de vulnerabilidade e as preferências individuais.</p></div></div>
+    <svg class="i down"><use href="#i-down"/></svg>
+    <div class="step tone-purple"><span class="n">3</span><span class="ico"><svg class="i"><use href="#i-cal"/></svg></span><div><h3>Planejar a prevenção</h3><p>Discutir estratégias de proteção, avaliar a possibilidade de PrEP, quando indicada, e organizar a continuidade do cuidado na APS.</p></div></div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024b).</p>
+</section>
+
+<section class="section" id="s3-2">
+  <div class="sec-head"><span class="sec-num">3.2</span><h2>O risco continua?</h2></div>
+  <div class="prose"><p>Reconhecida a importância de ampliar o cuidado para além da exposição recente, o próximo passo é avaliar as circunstâncias que possam favorecer novas exposições ao HIV. Essa investigação deve considerar as práticas sexuais, as estratégias de proteção utilizadas, o histórico de exposições e os contextos de vulnerabilidade, sem se limitar à frequência dos episódios. Dessa forma, é possível identificar necessidades de prevenção e discutir a possibilidade de utilização da PrEP, respeitando o interesse da pessoa e os critérios de elegibilidade vigentes <span class="cite">(Brasil, 2025b)</span>.</p></div>
+  <div class="ask" style="background:var(--cs)"><span class="ico tone-purple" style="width:48px;height:48px;font-size:22px"><svg class="i"><use href="#i-search"/></svg></span><div><h4 style="color:var(--c);text-transform:uppercase">O que considerar na avaliação?</h4><small>Para orientar essa avaliação durante a consulta, observe os aspectos apresentados a seguir.</small></div></div>
+  <div class="quad">
+    <div class="pop tone-green"><span class="n">1</span><h3 style="color:var(--tc);font-size:17px;text-transform:uppercase;margin:10px 0 6px;display:flex;gap:8px;align-items:center"><svg class="i"><use href="#i-alert"/></svg>Possibilidade de novas exposições</h3><p style="font-size:15px">Práticas sexuais com potencial de exposição ao HIV sem proteção efetiva e compartilhamento de agulhas, seringas ou outros equipamentos para injeção de drogas (Brasil, 2025b).</p></div>
+    <div class="pop tone-purple"><span class="n">2</span><h3 style="color:var(--tc);font-size:17px;text-transform:uppercase;margin:10px 0 6px;display:flex;gap:8px;align-items:center"><svg class="i"><use href="#i-doc"/></svg>Histórico de PEP e ISTs</h3><p style="font-size:15px">A utilização repetida da PEP e os antecedentes de infecções sexualmente transmissíveis podem sinalizar necessidades de prevenção ainda não atendidas (Brasil, 2025b).</p></div>
+    <div class="pop tone-green"><span class="n">3</span><h3 style="color:var(--tc);font-size:17px;text-transform:uppercase;margin:10px 0 6px;display:flex;gap:8px;align-items:center"><svg class="i"><use href="#i-barrier"/></svg>Barreiras à prevenção</h3><p style="font-size:15px">Dificuldades na negociação do preservativo, situações de coerção, estigma e obstáculos no acesso aos serviços de saúde podem limitar as possibilidades de proteção e a utilização de estratégias preventivas (Brasil, 2025a; Santos et al., 2026).</p></div>
+    <div class="pop tone-yellow"><span class="n">4</span><h3 style="color:var(--tc);font-size:17px;text-transform:uppercase;margin:10px 0 6px;display:flex;gap:8px;align-items:center"><svg class="i"><use href="#i-users"/></svg>Parcerias e proteção</h3><p style="font-size:15px">Considerar as práticas envolvidas, as medidas preventivas utilizadas e a situação de supressão viral das parcerias vivendo com HIV. Pessoas que mantêm supressão viral sustentada não transmitem HIV por via sexual, conforme o princípio Indetectável = Intransmissível (I=I) (Brasil, 2024b; Brasil, 2025b).</p></div>
+  </div>
+</section>
+
+<section class="section" id="s3-3">
+  <div class="sec-head"><span class="sec-num">3.3</span><h2>Como identificar risco recorrente?</h2></div>
+  <div class="prose"><p>Após reconhecer os aspectos que podem favorecer novas exposições ao HIV, é necessário compreender como eles se apresentam na realidade de cada pessoa. Para isso, o diálogo durante a consulta deve favorecer a expressão de experiências, dificuldades e preferências, por meio de perguntas abertas, escuta qualificada e linguagem livre de julgamentos. Essa abordagem contribui para uma avaliação individualizada e para a escolha compartilhada de estratégias preventivas <span class="cite">(Brasil, 2024b; Brasil, 2025b)</span>.</p></div>
+  <div class="ask" style="background:var(--cs)"><span class="ico tone-purple" style="width:48px;height:48px;font-size:22px"><svg class="i"><use href="#i-chat"/></svg></span><div><h4 style="color:var(--c);text-transform:uppercase">Perguntas que podem orientar a consulta</h4><small>Exemplos de perguntas que favorecem o diálogo sobre necessidades de prevenção do HIV.</small></div></div>
+  <div class="qs">
+    <div class="qrow tone-blue"><h4><span class="n">1</span>Possibilidade de novas exposições</h4><blockquote>“Você acredita que situações semelhantes possam acontecer novamente?”</blockquote><button class="copy copyq" data-copy="Você acredita que situações semelhantes possam acontecer novamente?">Copiar pergunta</button></div>
+    <div class="qrow tone-purple"><h4><span class="n">2</span>Estratégias e dificuldades de proteção</h4><blockquote>“Quais formas de prevenção do HIV você costuma utilizar? Existe alguma dificuldade para utilizá-las?”</blockquote><button class="copy copyq" data-copy="Quais formas de prevenção do HIV você costuma utilizar? Existe alguma dificuldade para utilizá-las?">Copiar pergunta</button></div>
+    <div class="qrow tone-green"><h4><span class="n">3</span>Necessidades e preferências</h4><blockquote>“Você gostaria de conhecer outras formas de prevenção que possam ser utilizadas antes de uma possível exposição ao HIV?”</blockquote><button class="copy copyq" data-copy="Você gostaria de conhecer outras formas de prevenção que possam ser utilizadas antes de uma possível exposição ao HIV?">Copiar pergunta</button></div>
+  </div>
+  <div class="alert"><span class="b"><svg class="i"><use href="#i-alert"/></svg>Importante!</span><p>As respostas devem orientar a avaliação individualizada e a discussão das estratégias preventivas disponíveis. O interesse pela PrEP deve ser acolhido e considerado, sem que uma resposta isolada determine automaticamente sua indicação.</p></div>
+</section>
+
+<section class="section" id="s3-4">
+  <div class="sec-head"><span class="sec-num">3.4</span><h2>Da PEP à PrEP: como realizar a transição?</h2></div>
+  <div class="prose"><p>Quando a avaliação identifica indicação de prevenção contínua contra o HIV, a transição da PEP para a PrEP pode ser planejada durante o acompanhamento. Para realizá-la com segurança, é necessário avaliar os critérios de elegibilidade, excluir a infecção pelo HIV e verificar as condições clínicas para o início da PrEP, conforme as recomendações nacionais <span class="cite">(Brasil, 2024b; Brasil, 2025b)</span>.</p>
+  <p>Para orientar essa decisão na prática clínica, acompanhe o fluxograma a seguir.</p></div>
+  <p class="callout-int"><svg class="i"><use href="#i-hand-tap"/></svg>Fluxograma interativo: responda cada pergunta para chegar à conduta.</p>
+  <div class="flow" data-flow="transicao"></div>
+  <div class="note"><b>Atenção à prática</b> Na transição da PEP para a PrEP, deve-se realizar teste rápido ou sorologia para HIV em amostra de sangue, bem como os demais exames indicados para o início da PrEP, caso ainda não tenham sido realizados durante a PEP (Brasil, 2025b). O uso de antirretrovirais durante a PEP pode interferir na detecção da infecção pelo HIV, ocasionando resultados falso-não reagentes. Assim, a interpretação dos testes deve considerar o contexto clínico e a possibilidade de infecção aguda, com investigação complementar quando indicada (Brasil, 2024b; Brasil, 2025b).</div>
+</section>
+
+<section class="section" id="caso-2">
+  <h2 class="h-plain" style="color:var(--navy)">Caso clínico: PEP terminou. O risco também?</h2>
+  <div class="case">
+    <div class="case-h"><span class="ico"><svg class="i"><use href="#i-person"/></svg></span><span>Caso clínico</span></div>
+    <p>Um indivíduo de 29 anos comparece à UBS após concluir os 28 dias de PEP, iniciada em um serviço de urgência após uma exposição sexual ao HIV. Durante o atendimento, relata relações sexuais ocasionais sem preservativo, associadas à dificuldade de negociar seu uso com as parcerias. Informa que desconhecia a PrEP e demonstra interesse em conhecer outras possibilidades de prevenção. A UBS dispõe de testagem rápida para HIV, mas a PrEP é disponibilizada em outro serviço da rede. A testagem prevista para a transição ainda não foi realizada.</p>
+  </div>
+  <div class="quiz" data-quiz="c2">
+    <div class="ask"><span class="qi">?</span><div><h4>Qual deve ser a próxima conduta do profissional?</h4><small>Selecione uma alternativa e confira a justificativa clínica.</small></div></div>
+    <div class="opts">
+      <label class="opt tone-green"><input type="radio" name="c2" value="A" id="c2-a"><span class="letter">A</span><span class="txt">Realizar a testagem para HIV e orientar a pessoa a procurar o serviço de PrEP, mantendo o acompanhamento habitual na UBS.</span></label>
+      <label class="opt tone-blue"><input type="radio" name="c2" value="B" id="c2-b"><span class="letter">B</span><span class="txt">Avaliar a indicação de PrEP, realizar a testagem para HIV e a investigação clínica necessária, verificar os critérios de elegibilidade e articular o acesso ao serviço responsável pela profilaxia.</span></label>
+      <label class="opt tone-purple"><input type="radio" name="c2" value="C" id="c2-c"><span class="letter">C</span><span class="txt">Orientar o uso de preservativos e programar uma nova avaliação para decidir sobre a PrEP após a conclusão do seguimento da PEP.</span></label>
+    </div>
+    <div class="fb" hidden></div>
+    <template data-fb="A" data-ok="0"><h4>Alternativa A — Conduta incompleta</h4><p>A testagem para HIV é necessária, mas orientar apenas a procura espontânea pelo serviço de PrEP pode representar uma barreira à continuidade da prevenção. Além da avaliação clínica, é importante facilitar o acesso ao serviço responsável pela profilaxia, conforme a organização da rede local.</p></template>
+    <template data-fb="B" data-ok="1"><h4>Alternativa B — Conduta adequada</h4><p>As possibilidades de novas exposições e o interesse manifestado justificam a avaliação para PrEP. É necessário realizar a testagem para HIV, investigar possível infecção aguda quando indicada e verificar os critérios de elegibilidade. Com a infecção pelo HIV adequadamente excluída e os requisitos clínicos atendidos, a PrEP pode ser iniciada após os 28 dias de PEP, sem intervalo desnecessário. A articulação com o serviço dispensador favorece o acesso e a continuidade da prevenção.</p></template>
+    <template data-fb="C" data-ok="0"><h4>Alternativa C — Conduta insuficiente</h4><p>O preservativo integra a prevenção combinada, mas sua orientação isolada não contempla todas as necessidades identificadas. Não é necessário aguardar a conclusão de todo o seguimento da PEP para avaliar a transição para PrEP, desde que sejam atendidos os requisitos clínicos e diagnósticos previstos nos protocolos.</p></template>
+  </div>
+  <p class="source">Fonte: Caso clínico fictício elaborado pela autora com base em Brasil (2024a), Brasil (2024b) e Brasil (2025b).</p>
+</section>
+</div>
+
+<!-- ============ MÓDULO 4 ============ -->
+<div class="mod-4" data-mod="Módulo 4 · Prevenção sem barreiras">
+<section class="banner mod-cover mod-4" id="modulo-4"><span class="spark" style="top:14%;left:56%"></span><span class="spark s2" style="top:70%;left:8%"></span><span class="spark s3" style="top:22%;left:94%"></span><span class="spark s2" style="top:84%;left:88%"></span>
+  <div class="wrap">
+    <div class="banner-text">
+      <span class="kicker">PEP &amp; PrEP · APS</span>
+      <p class="big">MÓDULO 4</p>
+      <h2>Prevenção sem barreiras: acolhimento, equidade e acesso na APS</h2>
+      <p class="lead">Da orientação clínica à construção de um cuidado acessível e centrado na pessoa.</p>
+      <div class="dots" aria-hidden="true"><i style="background:#2bb5a4"></i><i style="background:#ef6f86"></i><i style="background:#9b7be8"></i><i style="background:#f4a04b"></i></div>
+    </div>
+    <div class="orbit" aria-hidden="true"><span class="ring"></span><span class="ring r2"></span><span class="core"><svg class="i"><use href="#i-shield"/></svg></span><span class="chip" style="--a:-90deg;--cc:#2a72c9;--d:0.0s"><svg class="i"><use href="#i-door"/></svg></span><span class="chip" style="--a:-30deg;--cc:#b98500;--d:0.6s"><svg class="i"><use href="#i-scale"/></svg></span><span class="chip" style="--a:30deg;--cc:#d9701c;--d:1.2s"><svg class="i"><use href="#i-chattext"/></svg></span><span class="chip" style="--a:90deg;--cc:#1f9a6a;--d:1.8s"><svg class="i"><use href="#i-net"/></svg></span><span class="chip" style="--a:150deg;--cc:#d64560;--d:2.4s"><svg class="i"><use href="#i-careheart"/></svg></span><span class="chip" style="--a:210deg;--cc:#7b4fcf;--d:3.0s"><svg class="i"><use href="#i-cap"/></svg></span></div>
+  </div>
+</section>
+<div class="prose" style="margin-top:20px"><p>A indicação de estratégias como a PEP e a PrEP constitui uma etapa importante da prevenção do HIV, mas sua efetividade também depende das condições de acesso e continuidade do cuidado. Nesse contexto, a Atenção Primária à Saúde (APS) desempenha um papel fundamental na identificação de barreiras e na promoção de práticas acolhedoras e equitativas, considerando as necessidades individuais e a organização da rede de atenção <span class="cite">(Brasil, 2024a; Santos et al., 2026)</span>.</p></div>
+<div class="goals"><h3>Neste módulo, você vai:</h3><ul>
+  <li>Reconhecer barreiras de acesso à prevenção do HIV.</li>
+  <li>Identificar práticas de comunicação acolhedora e livre de julgamentos.</li>
+  <li>Compreender a importância da equidade na oferta de PEP e PrEP.</li>
+  <li>Reconhecer estratégias para facilitar o acesso e a continuidade do cuidado na APS.</li></ul></div>
+
+<section class="section" id="s4-1">
+  <div class="sec-head"><span class="sec-num">4.1</span><h2>As palavras também fazem parte do cuidado</h2></div>
+  <div class="prose"><p>Entre os aspectos que influenciam o acesso à prevenção do HIV, a comunicação durante o atendimento merece atenção. Perguntas baseadas em julgamentos ou pressupostos sobre a vida sexual podem dificultar o diálogo e o reconhecimento das necessidades individuais. Nesse contexto, a escuta qualificada e uma abordagem livre de julgamentos favorecem a identificação das necessidades de prevenção e a discussão compartilhada das estratégias disponíveis <span class="cite">(Storholm et al., 2021; Brasil, 2025b)</span>.</p>
+  <p>Na prática, pequenas mudanças na forma de perguntar podem tornar a conversa mais acolhedora.</p></div>
+  <div class="ask" style="background:var(--cs)"><span class="ico tone-orange" style="width:48px;height:48px;font-size:22px"><svg class="i"><use href="#i-chat"/></svg></span><div><h4 style="color:var(--c);text-transform:uppercase">Como transformar a comunicação?</h4><small>Toque nos cards para conhecer outras formas de conduzir a conversa.</small></div></div>
+  <div class="cards" style="margin-top:14px">
+    <button class="flash tone-pink" aria-pressed="false"><span class="face front"><span class="pill-tag" style="width:fit-content">Evite</span><span class="quote">“Por que você continua se expondo ao HIV?”</span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para ver como reformular</span></span>
+      <span class="face back"><span class="pill-tag" style="width:fit-content">Prefira</span><span class="quote">“Podemos conversar sobre suas necessidades atuais de prevenção?”</span><p><b>Por quê?</b> Substitui a culpabilização por uma pergunta que favorece o diálogo.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash tone-blue" aria-pressed="false"><span class="face front"><span class="pill-tag" style="width:fit-content">Evite</span><span class="quote">“Você tem parceiro fixo, então não precisa de PrEP.”</span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para ver como reformular</span></span>
+      <span class="face back"><span class="pill-tag" style="width:fit-content">Prefira</span><span class="quote">“Gostaria de conversar sobre as opções de prevenção que podem ser adequadas para você?”</span><p><b>Por quê?</b> Evita presumir necessidades de prevenção com base apenas no tipo de relacionamento.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+    <button class="flash tone-purple" aria-pressed="false"><span class="face front"><span class="pill-tag" style="width:fit-content">Evite</span><span class="quote">“Você teve relação com homem ou mulher?”</span><span class="hint"><svg class="i"><use href="#i-flip"/></svg>Toque para ver como reformular</span></span>
+      <span class="face back"><span class="pill-tag" style="width:fit-content">Prefira</span><span class="quote">“Para compreender suas necessidades de saúde, podemos conversar sobre suas práticas sexuais?”</span><p><b>Por quê?</b> Favorece uma abordagem inicial sem pressupor a identidade de gênero das parcerias, permitindo perguntas mais específicas quando necessárias à avaliação clínica.</p><span class="hint"><svg class="i"><use href="#i-left"/></svg>Voltar</span></span></button>
+  </div>
+  <p class="source">Fonte: Exemplos fictícios elaborados pela autora com base em Brasil (2025b) e Storholm et al. (2021).</p>
+</section>
+
+<section class="section" id="s4-2">
+  <div class="sec-head"><span class="sec-num">4.2</span><h2>O que está dificultando o acesso?</h2></div>
+  <div class="prose"><p>Além da comunicação durante o atendimento, outros fatores podem dificultar o acesso à prevenção do HIV. O estigma, as desigualdades sociais e as limitações relacionadas à informação e à organização dos serviços representam obstáculos que precisam ser reconhecidos para ampliar o acesso às estratégias preventivas <span class="cite">(Brasil, 2025a; Merle et al., 2024)</span>.</p></div>
+  <h3 class="tbl-title" style="text-align:center;color:var(--navy)">Conheça algumas barreiras</h3>
+  <div class="quad">
+    <div class="step tone-pink" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-hand"/></svg></span><div><h3 style="text-transform:none;font-size:18px">Estigma e discriminação</h3><p>O receio de sofrer julgamentos ou tratamento discriminatório pode desencorajar a procura pelos serviços de prevenção do HIV (Brasil, 2025a).</p></div></div>
+    <div class="step tone-blue" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-clinic"/></svg></span><div><h3 style="text-transform:none;font-size:18px">Barreiras organizacionais</h3><p>Limitações na oferta e na integração da PrEP aos serviços de saúde podem dificultar sua disponibilização e utilização (Merle et al., 2024; Casey et al., 2023).</p></div></div>
+    <div class="step tone-green" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-question"/></svg></span><div><h3 style="text-transform:none;font-size:18px">Barreiras informacionais</h3><p>O desconhecimento sobre a PrEP e sobre as possibilidades de acesso pode reduzir as oportunidades de utilização dessa estratégia preventiva (Merle et al., 2024).</p></div></div>
+    <div class="step tone-yellow" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-scale"/></svg></span><div><h3 style="text-transform:none;font-size:18px">Desigualdades sociais e territoriais</h3><p>Condições socioeconômicas e desigualdades no acesso aos serviços de saúde devem ser consideradas na construção de respostas equitativas à prevenção do HIV (Brasil, 2025a).</p></div></div>
+  </div>
+
+  <p class="callout-int" style="margin-top:28px"><svg class="i"><use href="#i-hand-tap"/></svg>Caso clínico com múltipla escolha: marque as barreiras e confira a análise.</p>
+  <div class="barrier-case" id="barrier">
+    <header><svg class="i"><use href="#i-barrier"/></svg>Reconheça as barreiras na prática</header>
+    <div class="in">
+      <p class="story">Uma usuária residente na zona rural deseja obter informações sobre PrEP. Entretanto, precisa se deslocar até outro município, desconhece os horários de atendimento e teme sofrer julgamentos ao procurar o serviço.</p>
+      <h4 style="color:var(--navy);font-size:17px">Quais barreiras estão presentes nessa situação?</h4>
+      <label class="chk" data-k="estigma"><input type="checkbox" id="bx-estigma"><span>Estigma e discriminação</span><span class="tag"></span></label>
+      <label class="chk" data-k="org"><input type="checkbox" id="bx-org"><span>Barreira organizacional</span><span class="tag"></span></label>
+      <label class="chk" data-k="info"><input type="checkbox" id="bx-info"><span>Barreira informacional</span><span class="tag"></span></label>
+      <label class="chk" data-k="terr"><input type="checkbox" id="bx-terr"><span>Barreira territorial</span><span class="tag"></span></label>
+      <div class="flow-foot"><button class="btn" id="bx-check" style="--c:var(--navy)">Conferir análise <svg class="i"><use href="#i-right"/></svg></button><button class="btn ghost" id="bx-reset" style="--c:var(--navy)" hidden>Refazer</button></div>
+      <div class="analysis" id="bx-analysis" hidden>
+        <p><b>A situação apresenta três obstáculos claramente identificáveis:</b></p>
+        <ul><li><b>Territorial:</b> a necessidade de deslocamento para outro município dificulta o acesso ao serviço.</li>
+        <li><b>Informacional:</b> a pessoa desconhece como realizar o agendamento.</li>
+        <li><b>Estigma:</b> o receio de sofrer julgamentos pode desencorajar a procura pelo atendimento.</li></ul>
+        <p>A <b>barreira organizacional</b> também deve ser investigada, pois a forma como o serviço disponibiliza informações e organiza o agendamento pode contribuir para essas dificuldades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="s4-3">
+  <div class="sec-head"><span class="sec-num">4.3</span><h2>Equidade: reconhecer diferentes necessidades</h2></div>
+  <div class="prose"><p>As barreiras de acesso à prevenção do HIV, discutidas anteriormente, não afetam todas as pessoas da mesma maneira. As condições sociais, os contextos de vulnerabilidade e as oportunidades de acesso aos serviços de saúde influenciam as necessidades de prevenção, tornando fundamental a adoção de práticas que promovam a equidade no cuidado <span class="cite">(Brasil, 2025a; Santos et al., 2026)</span>.</p>
+  <p>Nesse contexto, o Ministério da Saúde identifica populações-chave e prioritárias, considerando as particularidades da epidemia e as condições que podem ampliar a vulnerabilidade ao HIV. Essa classificação contribui para orientar o planejamento das ações de prevenção e a organização dos serviços de saúde <span class="cite">(Brasil, 2025a)</span>.</p></div>
+  <h3 class="tbl-title" style="text-align:center;color:var(--navy)">Conheça as populações-chave e prioritárias</h3>
+  <div class="cols2">
+    <div class="pop tone-blue"><h4>Populações-chave</h4><p>Grupos com maior concentração da epidemia do HIV.</p><ul>
+      <li>Gays e outros homens que fazem sexo com homens (HSH);</li><li>Pessoas trans e travestis;</li><li>Trabalhadores(as) do sexo;</li><li>Pessoas que usam álcool e outras drogas; e</li><li>Pessoas privadas de liberdade.</li></ul></div>
+    <div class="pop tone-green"><h4>Populações prioritárias</h4><p>Grupos cujas condições sociais e estruturais demandam atenção específica na prevenção.</p><ul>
+      <li>População negra;</li><li>Jovens;</li><li>Povos indígenas;</li><li>Pessoas em situação de rua;</li><li>Pessoas com baixa renda; e</li><li>Pessoas com pouco tempo de escolarização.</li></ul></div>
+  </div>
+  <p class="source">Fonte: Brasil (2025a).</p>
+  <div class="prose" style="margin-top:18px"><p>O reconhecimento das populações-chave e prioritárias contribui para orientar as ações de prevenção, mas não substitui a avaliação das necessidades individuais. A indicação da PrEP deve considerar os critérios estabelecidos no protocolo clínico vigente, sem se basear exclusivamente no pertencimento a determinado grupo <span class="cite">(Brasil, 2025b)</span>.</p>
+  <p>Na prática, promover a equidade significa reconhecer as particularidades de cada pessoa e considerá-las nas decisões relacionadas ao cuidado.</p></div>
+  <div class="ep">
+    <div class="hd no"><svg class="i"><use href="#i-x"/></svg>Evitar</div>
+    <div class="hd yes"><svg class="i"><use href="#i-check"/></svg>Priorizar</div>
+    <div class="c no">Presumir práticas sexuais a partir da identidade de gênero ou orientação sexual.</div>
+    <div class="c yes">Investigar as necessidades de prevenção sem pressupostos.</div>
+    <div class="c no">Desconsiderar as condições de vida na construção do cuidado.</div>
+    <div class="c yes">Considerar as circunstâncias individuais na definição das orientações.</div>
+    <div class="c no">Indicar ou descartar PrEP apenas pelo pertencimento a um grupo.</div>
+    <div class="c yes">Realizar avaliação individualizada conforme o PCDT vigente.</div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora, com base em Brasil (2025a, 2025b).</p>
+</section>
+
+<section class="section" id="s4-4">
+  <div class="sec-head"><span class="sec-num">4.4</span><h2>Como reduzir barreiras na APS?</h2></div>
+  <div class="prose"><p>Reconhecer as barreiras de acesso e as diferentes necessidades de prevenção é fundamental, mas também é necessário transformar esse conhecimento em ações no cotidiano dos serviços. Na APS, a organização dos fluxos, a qualificação das equipes e a articulação com a rede de atenção podem contribuir para ampliar a oferta da PrEP e favorecer a continuidade do cuidado <span class="cite">(Casey et al., 2023; Santos et al., 2026)</span>.</p>
+  <p>Nesse processo, as equipes também devem considerar a necessidade de atendimento oportuno às pessoas com possível indicação de PEP, respeitando o prazo recomendado para seu início <span class="cite">(Brasil, 2024b)</span>.</p></div>
+  <h3 class="tbl-title" style="text-align:center;color:var(--navy)">Da barreira à ação: o que a equipe pode fazer?</h3>
+  <div class="quad">
+    <div class="step tone-blue" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-door"/></svg></span><div><h3>Facilitar o acesso</h3><p>Disponibilizar informações claras e atualizadas sobre onde, quando e como acessar os serviços de prevenção do HIV.</p></div></div>
+    <div class="step tone-green" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-gear"/></svg></span><div><h3>Organizar os fluxos</h3><p>Definir os procedimentos e as responsabilidades da equipe, garantindo encaminhamento oportuno, especialmente nas situações que exigem avaliação para PEP.</p></div></div>
+    <div class="step tone-orange" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-cap"/></svg></span><div><h3>Qualificar a equipe</h3><p>Promover ações de educação permanente sobre prevenção combinada, PrEP, PEP e atendimento livre de discriminação.</p></div></div>
+    <div class="step tone-green" style="grid-template-columns:auto 1fr"><span class="ico"><svg class="i"><use href="#i-net"/></svg></span><div><h3>Articular a rede</h3><p>Fortalecer a comunicação entre a UBS e os serviços de referência para favorecer o acompanhamento e a continuidade do cuidado.</p></div></div>
+  </div>
+  <p class="source">Fonte: Elaborado pela autora com base em Brasil (2024a), Casey et al. (2023) e Santos et al. (2026).</p>
+
+  <p class="callout-int" style="margin-top:26px"><svg class="i"><use href="#i-hand-tap"/></svg>Checklist interativo: suas marcações ficam salvas apenas neste navegador.</p>
+  <div class="checklist" id="checklist">
+    <h3>Na prática: como está o acesso à prevenção na sua UBS?</h3>
+    <p style="font-size:15px">Reflita sobre a organização do seu serviço e assinale as ações que já fazem parte da rotina da equipe.</p>
+    <label class="chk"><input type="checkbox" id="ck-1"><span>A equipe conhece os serviços que oferecem PEP e PrEP e seus respectivos fluxos de acesso.</span></label>
+    <label class="chk"><input type="checkbox" id="ck-2"><span>As informações sobre locais, horários e encaminhamentos estão disponíveis e atualizadas.</span></label>
+    <label class="chk"><input type="checkbox" id="ck-3"><span>Os profissionais recebem orientações ou capacitações sobre prevenção combinada do HIV.</span></label>
+    <label class="chk"><input type="checkbox" id="ck-4"><span>Existem mecanismos de comunicação com os serviços de referência para acompanhar os encaminhamentos.</span></label>
+    <div class="meter" aria-hidden="true"><i id="ck-meter"></i></div>
+    <p class="score" id="ck-score" aria-live="polite">0 de 4 ações já fazem parte da rotina.</p>
+  </div>
+  <div class="reflect"><b>Para refletir</b><p>Quais dessas ações ainda precisam ser fortalecidas na sua UBS? Como elas poderiam ser discutidas e incorporadas à rotina da equipe?</p></div>
+</section>
+</div>
+
+<!-- ============ FINAL ============ -->
+<div data-mod="Seção final">
+<section class="section final" id="final">
+  <p class="eyebrow" style="color:var(--muted)">Seção final</p>
+  <h2 class="h-plain">Do conhecimento à prática</h2>
+  <div class="prose">
+    <p>Ao longo desta cartilha, foram apresentadas orientações sobre a PrEP, a PEP, a transição entre essas estratégias e os fatores que influenciam o acesso à prevenção do HIV na Atenção Primária à Saúde (APS), considerando as recomendações clínicas e as evidências disponíveis <span class="cite">(Brasil, 2024a, 2024b, 2025b)</span>.</p>
+    <p>Mais do que conhecer as indicações e recomendações clínicas, incorporar essas estratégias à rotina dos serviços requer uma abordagem individualizada, acolhedora e articulada às necessidades das pessoas e à organização da rede de atenção <span class="cite">(Brasil, 2025a; Santos et al., 2026)</span>.</p>
+    <p>O conhecimento se transforma em cuidado quando orienta decisões, amplia oportunidades de prevenção e contribui para a redução das barreiras de acesso.</p>
+  </div>
+  <h3 class="tbl-title" style="color:var(--navy)">Agora é sua vez</h3>
+  <div class="prose" style="margin-top:8px"><p>Convidamos você a responder ao formulário de avaliação desta cartilha digital, compartilhando suas percepções sobre a clareza, a relevância e a aplicabilidade dos conteúdos apresentados.</p>
+  <p>Sua participação contribuirá para a avaliação e o aprimoramento desta tecnologia educacional.</p></div>
+  <div class="cta"><a class="btn" id="forms-btn" target="_blank" rel="noopener">Acessar formulário de avaliação <svg class="i"><use href="#i-ext"/></svg></a><small id="forms-note"></small></div>
+</section>
+
+<section class="section" id="referencias">
+  <h2 class="h-plain">Referências</h2>
+  <div class="refs">
+    <p>ALLAN-BLITZ, L.-T.; MAYER, K. H. Updated guidelines on HIV post-exposure prophylaxis: continued efforts towards increased accessibility. <i>Journal of the International AIDS Society</i>, v. 27, e26393, 2024. DOI: <a href="https://doi.org/10.1002/jia2.26393" target="_blank" rel="noopener">10.1002/jia2.26393</a>.</p>
+    <p>BRASIL. Ministério da Saúde. <i>Guia para implementação da profilaxia pré-exposição (PrEP) oral à infecção pelo HIV na Atenção Primária à Saúde.</i> Brasília, DF: Ministério da Saúde, 2024a.</p>
+    <p>BRASIL. Ministério da Saúde. <i>Protocolo clínico e diretrizes terapêuticas para profilaxia pós-exposição de risco (PEP) à infecção por HIV, ISTs e hepatites virais.</i> Brasília, DF: Ministério da Saúde, 2024b. 81 p.</p>
+    <p>BRASIL. Ministério da Saúde. <i>Diretrizes para a eliminação da aids e da transmissão do HIV como problema de saúde pública no Brasil até 2030.</i> Brasília, DF: Ministério da Saúde, 2025a.</p>
+    <p>BRASIL. Ministério da Saúde. <i>Protocolo clínico e diretrizes terapêuticas para profilaxia pré-exposição (PrEP) oral à infecção pelo HIV.</i> Brasília, DF: Ministério da Saúde, 2025b.</p>
+    <p>CASEY, E. et al. Successful integration of HIV PrEP in primary care and women’s health clinical practice: a model for implementation. <i>Viruses</i>, v. 15, n. 6, artigo 1365, 2023. DOI: <a href="https://doi.org/10.3390/v15061365" target="_blank" rel="noopener">10.3390/v15061365</a>.</p>
+    <p>KOFMAN, A. D. et al. 2025 US Public Health Service guidelines for the management of occupational exposures to human immunodeficiency virus and recommendations for post-exposure prophylaxis in healthcare settings. <i>Infection Control &amp; Hospital Epidemiology</i>, v. 46, p. 863–873, 2025. DOI: <a href="https://doi.org/10.1017/ice.2025.10254" target="_blank" rel="noopener">10.1017/ice.2025.10254</a>.</p>
+    <p>MAISANO, M. et al. A global review of national guidelines of post-exposure prophylaxis for the prevention of HIV. <i>Journal of the International AIDS Society</i>, v. 28, e26333, 2025. DOI: <a href="https://doi.org/10.1002/jia2.26333" target="_blank" rel="noopener">10.1002/jia2.26333</a>.</p>
+    <p>MERLE, J. L. et al. Improving delivery and use of HIV pre-exposure prophylaxis in the US: a systematic review of implementation strategies and adjunctive interventions. <i>AIDS and Behavior</i>, v. 28, n. 7, p. 2321–2339, 2024. DOI: <a href="https://doi.org/10.1007/s10461-024-04331-0" target="_blank" rel="noopener">10.1007/s10461-024-04331-0</a>.</p>
+    <p>O MURCHU, E. et al. Oral pre-exposure prophylaxis (PrEP) to prevent HIV: a systematic review and meta-analysis of clinical effectiveness, safety, adherence and risk compensation in all populations. <i>BMJ Open</i>, v. 12, n. 5, e048478, 2022. DOI: <a href="https://doi.org/10.1136/bmjopen-2020-048478" target="_blank" rel="noopener">10.1136/bmjopen-2020-048478</a>.</p>
+    <p>SANTOS, L. C. et al. Barreiras e facilitadores à implementação da profilaxia pré-exposição ao HIV na Atenção Primária à Saúde. <i>Revista Gaúcha de Enfermagem</i>, 2026. DOI: <a href="https://doi.org/10.1590/1983-1447.2026.20250250.pt" target="_blank" rel="noopener">10.1590/1983-1447.2026.20250250.pt</a>.</p>
+    <p>STORHOLM, E. D. et al. Project SLIP: implementation of a PrEP screening and linkage intervention in primary care. <i>AIDS and Behavior</i>, v. 25, n. 8, p. 2348–2357, 2021. DOI: <a href="https://doi.org/10.1007/s10461-021-03197-w" target="_blank" rel="noopener">10.1007/s10461-021-03197-w</a>.</p>
+    <p>TANNER, M. R. et al. Antiretroviral postexposure prophylaxis after sexual, injection drug use, or other nonoccupational exposure to HIV: CDC recommendations, United States, 2025. <i>MMWR Recommendations and Reports</i>, v. 74, n. 1, p. 1–56, 2025. DOI: <a href="https://doi.org/10.15585/mmwr.rr7401a1" target="_blank" rel="noopener">10.15585/mmwr.rr7401a1</a>.</p>
+  </div>
+</section>
+</div>
+
+<div class="toplink"><a class="bar-btn" href="#inicio"><svg class="i"><use href="#i-up"/></svg>Voltar ao início</a></div>
+</main>
+
+<footer><div class="wrap">PEP &amp; PrEP na Atenção Primária à Saúde · Guia prático para profissionais de saúde. As orientações não substituem a avaliação clínica individualizada nem as recomendações oficiais vigentes.</div></footer>
+
+<script>
+(function(){
+  /* ---- link do formulário de avaliação: cole aqui o endereço do Google Forms ---- */
+  var FORMS_URL = "";
+
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+
+  /* formulário */
+  var fb=$("#forms-btn"), fn=$("#forms-note");
+  if(FORMS_URL && /^https:\/\//.test(FORMS_URL)){ fb.href=FORMS_URL; }
+  else { fb.setAttribute("aria-disabled","true"); fb.style.opacity=".55"; fb.style.pointerEvents="none"; fn.textContent="O link do formulário será disponibilizado em breve."; }
+
+  /* sumário */
+  var toc=$("#toc");
+  function openToc(){toc.hidden=false;$("#toc-close").focus()}
+  function closeToc(){toc.hidden=true}
+  $("#toc-open").addEventListener("click",openToc);
+  $("#toc-close").addEventListener("click",closeToc);
+  toc.addEventListener("click",function(e){ if(e.target===toc || e.target.closest("a")) closeToc(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape" && !toc.hidden) closeToc(); });
+
+  /* voltar */
+  var navCount=0;
+  window.addEventListener("hashchange",function(){navCount++});
+  $("#back-btn").addEventListener("click",function(){
+    if(navCount>0){ navCount-=2; history.back(); } else { location.hash="#menu"; }
+  });
+
+  /* barra: progresso e módulo atual */
+  var where=$("#bar-where"), prog=$("#progress");
+  var mods=$$("[data-mod]");
+  function onScroll(){
+    var h=document.documentElement; var max=h.scrollHeight-h.clientHeight;
+    prog.style.width=(max>0? (h.scrollTop/max*100):0)+"%";
+    var cur="Guia prático para profissionais de saúde";
+    for(var i=0;i<mods.length;i++){ if(mods[i].getBoundingClientRect().top<120) cur=mods[i].getAttribute("data-mod"); }
+    if(where.textContent!==cur) where.textContent=cur;
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  /* flashcards */
+  $$(".flash").forEach(function(b){ b.addEventListener("click",function(){ b.setAttribute("aria-pressed", b.getAttribute("aria-pressed")==="true"?"false":"true"); }); });
+
+  /* copiar */
+  $$("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var t=b.getAttribute("data-copy"), old=b.textContent;
+      function done(m){ b.textContent=m; setTimeout(function(){b.textContent=old},1600); }
+      try{ navigator.clipboard.writeText(t).then(function(){done("Copiado")},function(){done("Selecione e copie")}); }catch(e){ done("Selecione e copie"); }
+    });
+  });
+
+  /* abas (linha do tempo, agenda) */
+  $$("[data-tabs]").forEach(function(box){
+    var tabs=$$("[role=tab]",box);
+    tabs.forEach(function(t){ t.addEventListener("click",function(){
+      tabs.forEach(function(o){ o.setAttribute("aria-selected", o===t?"true":"false"); var p=document.getElementById(o.getAttribute("data-panel")); if(p) p.hidden = o!==t; });
+    }); });
+  });
+
+  /* cartões expansíveis */
+  $$(".more-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      var d=document.getElementById(b.getAttribute("aria-controls")); var open=d.hidden; d.hidden=!open;
+      b.setAttribute("aria-expanded",open?"true":"false");
+      b.firstChild.textContent = open? "Ocultar particularidades " : "Ver particularidades do cuidado ";
+    });
+  });
+
+  /* quizzes */
+  $$("[data-quiz]").forEach(function(q){
+    var box=$(".fb",q);
+    $$("input[type=radio]",q).forEach(function(r){
+      r.addEventListener("change",function(){
+        var tpl=$('template[data-fb="'+r.value+'"]',q); var ok=tpl.getAttribute("data-ok")==="1";
+        box.className="fb "+(ok?"right":"wrong"); box.innerHTML=tpl.innerHTML; box.hidden=false;
+        $$(".opt",q).forEach(function(o){ o.classList.remove("is-right","is-wrong"); });
+        r.closest(".opt").classList.add(ok?"is-right":"is-wrong");
+      });
+    });
+  });
+
+  /* barreiras */
+  var bxAns={estigma:true,info:true,terr:true,org:"investigar"};
+  $("#bx-check").addEventListener("click",function(){
+    $$("#barrier .chk").forEach(function(l){
+      var k=l.getAttribute("data-k"), on=$("input",l).checked, tag=$(".tag",l);
+      l.classList.remove("hit","miss");
+      if(bxAns[k]===true){ l.classList.add(on?"hit":"miss"); tag.textContent= on?"Presente ✓":"Presente — faltou marcar"; }
+      else { l.classList.add("miss"); tag.textContent="Também deve ser investigada"; }
+    });
+    $("#bx-analysis").hidden=false; $("#bx-reset").hidden=false;
+  });
+  $("#bx-reset").addEventListener("click",function(){
+    $$("#barrier .chk").forEach(function(l){ l.classList.remove("hit","miss"); $(".tag",l).textContent=""; $("input",l).checked=false; });
+    $("#bx-analysis").hidden=true; $("#bx-reset").hidden=true;
+  });
+
+  /* checklist com memória local */
+  var cks=$$("#checklist input"), KEY="pepprep-checklist";
+  try{ var saved=JSON.parse(localStorage.getItem(KEY)||"[]"); cks.forEach(function(c,i){ c.checked=!!saved[i]; }); }catch(e){}
+  function upd(){
+    var n=cks.filter(function(c){return c.checked}).length;
+    $("#ck-meter").style.width=(n/cks.length*100)+"%";
+    $("#ck-score").textContent=n+" de "+cks.length+(n===1?" ação já faz":" ações já fazem")+" parte da rotina.";
+    try{ localStorage.setItem(KEY,JSON.stringify(cks.map(function(c){return c.checked}))); }catch(e){}
+  }
+  cks.forEach(function(c){ c.addEventListener("change",upd); }); upd();
+
+  /* fluxogramas interativos */
+  var FLOWS={
+    prep:{start:"Pessoa com interesse ou necessidade de PrEP oral",
+      steps:[
+        {q:"Atende aos critérios iniciais de elegibilidade?",h:"Verificar idade igual ou superior a 15 anos, peso corporal de pelo menos 35 kg, atividade sexual, contexto de vulnerabilidade à infecção pelo HIV e interesse em utilizar a PrEP.",go:"sim",stop:"Reavaliar a indicação e oferecer outras estratégias de prevenção."},
+        {q:"Há indicação de PEP por exposição recente ao HIV?",h:"Investigar possíveis exposições ao HIV ocorridas nas últimas 72 horas.",go:"nao",stop:"Avaliar e iniciar a PEP quando indicada, sem atraso, e planejar a possível transição para PrEP.",link:["#s2-2","Ir para a avaliação da PEP"]},
+        {q:"Foi possível excluir a infecção pelo HIV?",h:"Realizar testagem para HIV e investigar exposições recentes e sinais ou sintomas sugestivos de infecção aguda.",go:"sim",stop:"Prosseguir com a investigação diagnóstica. Se houver teste reagente, seguir o fluxo de confirmação diagnóstica e vinculação ao cuidado para HIV. Se houver suspeita de infecção aguda, adiar o início da PrEP até a definição diagnóstica."},
+        {q:"Existem contraindicações ao uso da PrEP oral?",h:"Avaliar o histórico clínico e o uso de medicamentos, a função renal conforme os critérios do protocolo e outros aspectos relevantes para a escolha da modalidade.",go:"nao",stop:"Não iniciar o esquema contraindicado e definir a conduta apropriada."}],
+      end:{t:"Conduta",p:"Definir a modalidade de PrEP oral, orientar o início e programar o acompanhamento, após concluir a avaliação necessária.",link:["#s1-5","Ver a continuidade do cuidado na PrEP"]}},
+    pep:{start:"Possível exposição ao HIV",
+      steps:[
+        {q:"O material biológico apresenta risco de transmissão do HIV?",go:"sim",stop:"PEP não indicada. Oferecer orientações conforme a situação."},
+        {q:"O tipo de exposição apresenta risco de transmissão?",h:"Considerar exposições percutâneas, contato de material potencialmente infectante com mucosas ou pele não íntegra e exposições sexuais com risco de transmissão.",go:"sim",stop:"PEP não indicada. Oferecer orientações de prevenção."},
+        {q:"A exposição ocorreu há até 72 horas?",go:"sim",stop:"PEP não indicada. Avaliar necessidade de testagem, acompanhamento e outras medidas de prevenção.",link:["#s2-4","Ver a linha do tempo da PEP"]},
+        {q:"A pessoa exposta apresenta resultado não reagente para HIV?",go:"sim",stop:"Seguir o fluxo diagnóstico para HIV e definir a conduta conforme os resultados."}],
+      choice:{q:"Avaliar a situação da pessoa-fonte, quando possível, para definir a conduta.",opts:[
+        ["HIV reagente/positivo","Considerar as informações disponíveis sobre tratamento antirretroviral, supressão viral e características da exposição, conforme o protocolo."],
+        ["HIV não reagente/negativo","Em geral, a PEP não está indicada, exceto quando houver suspeita de infecção recente que exija avaliação individualizada."],
+        ["Situação desconhecida ou pessoa-fonte indisponível","Avaliar individualmente a indicação da PEP, considerando a gravidade da exposição e os fatores de risco, sem retardar seu início quando indicada."]]},
+      end:{t:"Próximo passo",p:"Defina a conduta com base nos quadros abaixo. Se a PEP estiver indicada, inicie o mais precocemente possível.",link:["#s2-3","Ver o esquema preferencial (guia rápido)"]}},
+    transicao:{start:"Pessoa em conclusão dos 28 dias de PEP",
+      steps:[
+        {q:"Há indicação de PrEP e interesse da pessoa em utilizá-la?",go:"sim",stop:"Oferecer outras estratégias de prevenção e reavaliar conforme as necessidades individuais."},
+        {q:"A infecção pelo HIV foi adequadamente excluída?",go:"sim",noLabel:"Não / dúvida",stop:"Realizar investigação conforme os algoritmos diagnósticos vigentes antes de iniciar a PrEP."},
+        {q:"Os critérios clínicos para utilização da PrEP estão atendidos?",go:"sim",noLabel:"Não / contraindicação",stop:"Avaliar a condição identificada e definir a conduta preventiva apropriada."}],
+      end:{t:"Iniciar a PrEP",p:"Após a conclusão dos 28 dias de PEP, sem intervalo desnecessário, e organizar o acompanhamento clínico e laboratorial.",link:["#s1-5","Ver a continuidade do cuidado na PrEP"]}}
+  };
+
+  function linkHtml(l){ return l? '<a class="btn ghost" href="'+l[0]+'">'+esc(l[1])+' <svg class="i"><use href="#i-right"/></svg></a>' : ""; }
+
+  function fullList(f){
+    var h='<details class="full"><summary>Ver o fluxograma completo</summary><div class="full-list">';
+    f.steps.forEach(function(s,i){
+      var noIsStop = s.go==="sim";
+      h+='<div><p class="q">'+(i+1)+'. '+esc(s.q)+'</p>'+(s.h?'<p class="cite">'+esc(s.h)+'</p>':'')+'<p class="no"><b>'+esc(noIsStop?(s.noLabel||"Não").toUpperCase():"SIM")+' »</b> '+esc(s.stop)+'</p><p class="cite"><b>'+(noIsStop?"SIM":"NÃO")+'</b> » próxima etapa</p></div>';
+    });
+    if(f.choice){ h+='<div><p class="q">'+esc(f.choice.q)+'</p>'; f.choice.opts.forEach(function(o){ h+='<p><b>'+esc(o[0])+':</b> '+esc(o[1])+'</p>'; }); h+='</div>'; }
+    h+='<div><p class="q" style="color:var(--ok)">'+esc(f.end.t)+'</p><p>'+esc(f.end.p)+'</p></div></div></details>';
+    return h;
+  }
+
+  $$("[data-flow]").forEach(function(el){
+    var f=FLOWS[el.getAttribute("data-flow")];
+    var trail=[];
+    function render(){
+      var i=trail.length, h='<div class="flow-start">'+esc(f.start)+'</div>';
+      if(trail.length){ h+='<ol class="flow-trail">'; trail.forEach(function(a,k){ h+='<li><svg class="i" style="color:var(--ok)"><use href="#i-check"/></svg><span>'+esc(f.steps[k].q)+'</span><span class="ans">'+(a==="sim"?"Sim":"Não")+'</span></li>'; }); h+='</ol>'; }
+      var stopped = trail.length && trail[trail.length-1]!==f.steps[trail.length-1].go;
+      if(stopped){
+        var s=f.steps[trail.length-1];
+        h+='<div class="flow-out stop" role="status"><h4><svg class="i"><use href="#i-alert"/></svg>Conduta</h4><p>'+esc(s.stop)+'</p>'+(s.link?'<div>'+linkHtml(s.link)+'</div>':'')+'</div>';
+      } else if(i<f.steps.length){
+        var st=f.steps[i];
+        var yesLbl="Sim", noLbl=st.noLabel||"Não";
+        if(st.go==="nao"){ /* nos passos em que NÃO segue o fluxo, o rótulo especial fica no SIM */ }
+        h+='<div class="flow-step"><div class="top"><span class="n">'+(i+1)+'</span><div><h4>'+esc(st.q)+'</h4>'+(st.h?'<p class="h">'+esc(st.h)+'</p>':'')+'</div></div><div class="flow-actions"><button class="ans-btn" data-a="sim">'+yesLbl+'</button><button class="ans-btn" data-a="nao">'+esc(noLbl)+'</button></div></div>';
+      } else if(f.choice && !el._choice){
+        h+='<div class="flow-step"><div class="top"><span class="n"><svg class="i"><use href="#i-person"/></svg></span><h4>'+esc(f.choice.q)+'</h4></div><div class="choice-grid">';
+        f.choice.opts.forEach(function(o,k){ h+='<button class="choice" data-c="'+k+'">'+esc(o[0])+'<svg class="i"><use href="#i-right"/></svg></button>'; });
+        h+='</div></div>';
+      } else {
+        if(f.choice){ var o=f.choice.opts[el._choice-1]; h+='<div class="flow-out stop" style="background:var(--cs);border-color:var(--c)"><h4 style="color:var(--c)"><svg class="i"><use href="#i-person"/></svg>Pessoa-fonte: '+esc(o[0])+'</h4><p>'+esc(o[1])+'</p></div>'; }
+        h+='<div class="flow-out go" role="status"><h4><svg class="i"><use href="#i-check"/></svg>'+esc(f.end.t)+'</h4><p>'+esc(f.end.p)+'</p>'+(f.end.link?'<div>'+linkHtml(f.end.link)+'</div>':'')+'</div>';
+      }
+      if(trail.length) h+='<div class="flow-foot"><button class="btn ghost" data-undo>'+'<svg class="i"><use href="#i-left"/></svg>Etapa anterior</button><button class="btn ghost" data-reset><svg class="i"><use href="#i-refresh"/></svg>Recomeçar</button></div>';
+      h+=fullList(f);
+      el.innerHTML=h;
+    }
+    el.addEventListener("click",function(e){
+      var b=e.target.closest("button"); if(!b) return;
+      if(b.hasAttribute("data-a")){ trail.push(b.getAttribute("data-a")); render(); }
+      else if(b.hasAttribute("data-c")){ el._choice=+b.getAttribute("data-c")+1; render(); }
+      else if(b.hasAttribute("data-undo")){ if(el._choice){ el._choice=0; } else { trail.pop(); } render(); }
+      else if(b.hasAttribute("data-reset")){ trail=[]; el._choice=0; render(); }
+    });
+    render();
+  });
+})();
+</script>
+
+</body></html>
